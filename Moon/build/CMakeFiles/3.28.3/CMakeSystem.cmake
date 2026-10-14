@@ -3,7 +3,7 @@ set(CMAKE_HOST_SYSTEM_NAME "Linux")
 set(CMAKE_HOST_SYSTEM_VERSION "7.0.0-34-generic")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
-include("/home/user13/Documents/MoonLab/lab_AVR/AVRProject/tools/avr-toolchain.cmake")
+include("/home/user13/Documents/MoonLab/Project_Fan/Moon/tools/avr-toolchain.cmake")
 
 set(CMAKE_SYSTEM "Generic")
 set(CMAKE_SYSTEM_NAME "Generic")
