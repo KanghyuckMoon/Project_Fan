@@ -1,0 +1,46 @@
+Change Dir: '/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build'
+
+Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile
+/usr/bin/cmake -P /home/user13/Documents/MoonLab/lab_AVR/AVRProject/build/CMakeFiles/VerifyGlobs.cmake
+/usr/bin/cmake -S/home/user13/Documents/MoonLab/lab_AVR/AVRProject -B/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/user13/Documents/MoonLab/lab_AVR/AVRProject/build/CMakeFiles /home/user13/Documents/MoonLab/lab_AVR/AVRProject/build//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build'
+/usr/bin/gmake  -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/depend
+gmake[2]: Entering directory '/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build'
+cd /home/user13/Documents/MoonLab/lab_AVR/AVRProject/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/user13/Documents/MoonLab/lab_AVR/AVRProject /home/user13/Documents/MoonLab/lab_AVR/AVRProject /home/user13/Documents/MoonLab/lab_AVR/AVRProject/build /home/user13/Documents/MoonLab/lab_AVR/AVRProject/build /home/user13/Documents/MoonLab/lab_AVR/AVRProject/build/CMakeFiles/atmega128a.elf.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build'
+/usr/bin/gmake  -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/build
+gmake[2]: Entering directory '/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build'
+[  5%] Linking C executable atmega128a.elf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/atmega128a.elf.dir/link.txt --verbose=1
+/opt/microchip/avr-gcc/bin/avr-gcc -mmcu=atmega128 -flto -fuse-linker-plugin -Wl,--gc-sections -Wl,-Map=/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build/atmega128a.map,--cref -Wl,--print-memory-usage CMakeFiles/atmega128a.elf.dir/src/ap/ap.c.obj CMakeFiles/atmega128a.elf.dir/src/driver/btn.c.obj CMakeFiles/atmega128a.elf.dir/src/driver/fnd.c.obj CMakeFiles/atmega128a.elf.dir/src/driver/fnd4.c.obj CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj CMakeFiles/atmega128a.elf.dir/src/driver/led.c.obj CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.obj CMakeFiles/atmega128a.elf.dir/src/main.c.obj CMakeFiles/atmega128a.elf.dir/src/main10.c.obj CMakeFiles/atmega128a.elf.dir/src/main2.c.obj CMakeFiles/atmega128a.elf.dir/src/main3.c.obj CMakeFiles/atmega128a.elf.dir/src/main4.c.obj CMakeFiles/atmega128a.elf.dir/src/main5.c.obj CMakeFiles/atmega128a.elf.dir/src/main6.c.obj CMakeFiles/atmega128a.elf.dir/src/main7.c.obj CMakeFiles/atmega128a.elf.dir/src/main8.c.obj CMakeFiles/atmega128a.elf.dir/src/main9.c.obj -o atmega128a.elf  -lm 
+/opt/microchip/avr-gcc/bin/../lib/gcc/avr/15.1.0/../../../../avr/bin/ld: CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj (symbol from plugin): in function `LCD_WriteCommand':
+(.text+0x0): multiple definition of `LCD_WriteCommand'; CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj (symbol from plugin):(.text+0x0): first defined here
+/opt/microchip/avr-gcc/bin/../lib/gcc/avr/15.1.0/../../../../avr/bin/ld: CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj (symbol from plugin): in function `LCD_WriteCommand':
+(.text+0x0): multiple definition of `LCD_WriteData'; CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj (symbol from plugin):(.text+0x0): first defined here
+/opt/microchip/avr-gcc/bin/../lib/gcc/avr/15.1.0/../../../../avr/bin/ld: CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj (symbol from plugin): in function `LCD_WriteCommand':
+(.text+0x0): multiple definition of `LCD_Clear'; CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj (symbol from plugin):(.text+0x0): first defined here
+/opt/microchip/avr-gcc/bin/../lib/gcc/avr/15.1.0/../../../../avr/bin/ld: CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj (symbol from plugin): in function `LCD_WriteCommand':
+(.text+0x0): multiple definition of `LCD_Init'; CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj (symbol from plugin):(.text+0x0): first defined here
+/opt/microchip/avr-gcc/bin/../lib/gcc/avr/15.1.0/../../../../avr/bin/ld: CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj (symbol from plugin): in function `LCD_WriteCommand':
+(.text+0x0): multiple definition of `LCD_GotoXY'; CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj (symbol from plugin):(.text+0x0): first defined here
+/opt/microchip/avr-gcc/bin/../lib/gcc/avr/15.1.0/../../../../avr/bin/ld: CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj (symbol from plugin): in function `LCD_WriteCommand':
+(.text+0x0): multiple definition of `LCD_WriteString'; CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj (symbol from plugin):(.text+0x0): first defined here
+/opt/microchip/avr-gcc/bin/../lib/gcc/avr/15.1.0/../../../../avr/bin/ld: CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj (symbol from plugin): in function `LCD_WriteCommand':
+(.text+0x0): multiple definition of `LCD_WriteStringXY'; CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj (symbol from plugin):(.text+0x0): first defined here
+Memory region         Used Size  Region Size  %age Used
+            text:         566 B       128 KB      0.43%
+            data:          10 B         4 KB      0.24%
+          eeprom:           0 B         4 KB      0.00%
+            fuse:           0 B          3 B      0.00%
+            lock:           0 B         1 KB      0.00%
+       signature:           0 B         1 KB      0.00%
+ user_signatures:           0 B         1 KB      0.00%
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/atmega128a.elf.dir/build.make:369: atmega128a.elf] Error 1
+gmake[2]: Leaving directory '/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build'
+gmake[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/atmega128a.elf.dir/all] Error 2
+gmake[1]: Leaving directory '/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build'
+gmake: *** [Makefile:91: all] Error 2
+

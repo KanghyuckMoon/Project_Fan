@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "AVR",
+            "compilerPath": "/opt/microchip/avr-gcc/bin/avr-gcc",
+            "compilerArgs": [
+                "-mmcu=atmega128"
+            ],
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/microchip/avr-gcc/avr/include"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

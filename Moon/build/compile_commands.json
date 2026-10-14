@@ -1,0 +1,122 @@
+[
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/ap/ap.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap/ap.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap/ap.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/ap/ap.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/driver/btn.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/btn.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/btn.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/driver/btn.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/driver/fnd.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/fnd.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/fnd.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/driver/fnd.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/driver/fnd4.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/fnd4.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/fnd4.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/driver/fnd4.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/driver/i2c.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/i2c.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/i2c.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/driver/i2c.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/driver/i2c_lcd.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/i2c_lcd.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/i2c_lcd.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/driver/i2c_lcd.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/lcd_4bit.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/lcd_4bit.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/lcd_8bit.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/lcd_8bit.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/driver/led.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/led.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/led.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/driver/led.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/uart0.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/uart0.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main10.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main10.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main10.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main10.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main2.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main2.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main2.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main2.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main3.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main3.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main3.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main3.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main4.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main4.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main4.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main4.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main5.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main5.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main5.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main5.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main6.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main6.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main6.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main6.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main7.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main7.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main7.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main7.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main8.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main8.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main8.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main8.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/bsp -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/hw -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common -I/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/main9.c.obj -c /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main9.c",
+  "file": "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/main9.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/main9.c.obj"
+}
+]
