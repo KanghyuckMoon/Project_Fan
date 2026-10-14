@@ -1,31 +1,28 @@
-#include "ap.h"
+#include <avr/io.h>
 
-
-
-int main()
+int main(void)
 {
-   apInit();
-   apMain();
+    // PB4(OC0)를 출력으로 설정
+    DDRB |= (1 << PB4);
 
-   // DDRB |= (1<<PB5);
+    // Timer0 Fast PWM
+    // Non-Inverting Mode
+    TCCR0 =
+        (1 << WGM00) |
+        (1 << WGM01) |
+        (1 << COM01);
 
-   // TCCR1A |= (1<<COM1A1)|(1<<WGM11);
-   // TCCR1B |= (1<<WGM13)|(1<<WGM12)|(1<<CS11)|(1<<CS10);
-   // TCCR1C = 0;
+    // 분주비 64
+    TCCR0 |=
+        (1 << CS01) |
+        (1 << CS00);
 
-   // ICR1 = 4999;
+    // PWM Duty 약 50%
+    OCR0 = 128;
 
-   // // OCR1A = 650;
+    while (1)
+    {
+    }
 
-
-   // while(1)
-   // {
-   //     _delay_ms(1000);
-   //     OCR1A = 100;
-   //     _delay_ms(1000);
-   //     OCR1A = 350;
-   //     _delay_ms(1000);
-   //     OCR1A = 600;
-       
-   // }
+    return 0;
 }
