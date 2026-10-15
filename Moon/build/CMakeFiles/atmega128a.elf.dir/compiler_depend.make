@@ -11,6 +11,8 @@ CMakeFiles/atmega128a.elf.dir/src/ap/ap.c.obj: /home/user13/Documents/MoonLab/Pr
   /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/i2c_lcd.h \
   /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/led.h \
   /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.h \
   /opt/microchip/avr-gcc/avr/include/avr/common.h \
   /opt/microchip/avr-gcc/avr/include/avr/fuse.h \
   /opt/microchip/avr-gcc/avr/include/avr/interrupt.h \
@@ -189,24 +191,6 @@ CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.obj: /home/user13/Documents/Moo
   /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stddef.h \
   /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdint.h
 
-CMakeFiles/atmega128a.elf.dir/src/main.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main.c
-
-CMakeFiles/atmega128a.elf.dir/src/main10.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main10.c
-
-CMakeFiles/atmega128a.elf.dir/src/main2.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main2.c
-
-CMakeFiles/atmega128a.elf.dir/src/main3.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main3.c
-
-CMakeFiles/atmega128a.elf.dir/src/main4.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main4.c
-
-CMakeFiles/atmega128a.elf.dir/src/main5.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main5.c
-
-CMakeFiles/atmega128a.elf.dir/src/main6.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main6.c
-
-CMakeFiles/atmega128a.elf.dir/src/main7.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main7.c
-
-CMakeFiles/atmega128a.elf.dir/src/main8.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main8.c
-
 CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main9.c \
   /home/user13/Documents/MoonLab/Project_Fan/Moon/src/ap/ap.h \
   /home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/def.h \
@@ -217,6 +201,85 @@ CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: /home/user13/Documents/MoonLab/Pr
   /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/i2c_lcd.h \
   /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/led.h \
   /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.h \
+  /opt/microchip/avr-gcc/avr/include/avr/common.h \
+  /opt/microchip/avr-gcc/avr/include/avr/fuse.h \
+  /opt/microchip/avr-gcc/avr/include/avr/interrupt.h \
+  /opt/microchip/avr-gcc/avr/include/avr/io.h \
+  /opt/microchip/avr-gcc/avr/include/avr/iom128.h \
+  /opt/microchip/avr-gcc/avr/include/avr/lock.h \
+  /opt/microchip/avr-gcc/avr/include/avr/portpins.h \
+  /opt/microchip/avr-gcc/avr/include/avr/sfr_defs.h \
+  /opt/microchip/avr-gcc/avr/include/avr/version.h \
+  /opt/microchip/avr-gcc/avr/include/inttypes.h \
+  /opt/microchip/avr-gcc/avr/include/stdint.h \
+  /opt/microchip/avr-gcc/avr/include/stdio.h \
+  /opt/microchip/avr-gcc/avr/include/stdlib.h \
+  /opt/microchip/avr-gcc/avr/include/string.h \
+  /opt/microchip/avr-gcc/avr/include/util/delay.h \
+  /opt/microchip/avr-gcc/avr/include/util/delay_basic.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdarg.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdbool.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stddef.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdint.h
+
+CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/def.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.h \
+  /opt/microchip/avr-gcc/avr/include/avr/common.h \
+  /opt/microchip/avr-gcc/avr/include/avr/fuse.h \
+  /opt/microchip/avr-gcc/avr/include/avr/interrupt.h \
+  /opt/microchip/avr-gcc/avr/include/avr/io.h \
+  /opt/microchip/avr-gcc/avr/include/avr/iom128.h \
+  /opt/microchip/avr-gcc/avr/include/avr/lock.h \
+  /opt/microchip/avr-gcc/avr/include/avr/portpins.h \
+  /opt/microchip/avr-gcc/avr/include/avr/sfr_defs.h \
+  /opt/microchip/avr-gcc/avr/include/avr/version.h \
+  /opt/microchip/avr-gcc/avr/include/inttypes.h \
+  /opt/microchip/avr-gcc/avr/include/stdint.h \
+  /opt/microchip/avr-gcc/avr/include/stdio.h \
+  /opt/microchip/avr-gcc/avr/include/stdlib.h \
+  /opt/microchip/avr-gcc/avr/include/string.h \
+  /opt/microchip/avr-gcc/avr/include/util/delay.h \
+  /opt/microchip/avr-gcc/avr/include/util/delay_basic.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdarg.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdbool.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stddef.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdint.h
+
+CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/def.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.h \
+  /opt/microchip/avr-gcc/avr/include/avr/common.h \
+  /opt/microchip/avr-gcc/avr/include/avr/fuse.h \
+  /opt/microchip/avr-gcc/avr/include/avr/interrupt.h \
+  /opt/microchip/avr-gcc/avr/include/avr/io.h \
+  /opt/microchip/avr-gcc/avr/include/avr/iom128.h \
+  /opt/microchip/avr-gcc/avr/include/avr/lock.h \
+  /opt/microchip/avr-gcc/avr/include/avr/portpins.h \
+  /opt/microchip/avr-gcc/avr/include/avr/sfr_defs.h \
+  /opt/microchip/avr-gcc/avr/include/avr/version.h \
+  /opt/microchip/avr-gcc/avr/include/inttypes.h \
+  /opt/microchip/avr-gcc/avr/include/stdint.h \
+  /opt/microchip/avr-gcc/avr/include/stdio.h \
+  /opt/microchip/avr-gcc/avr/include/stdlib.h \
+  /opt/microchip/avr-gcc/avr/include/string.h \
+  /opt/microchip/avr-gcc/avr/include/util/delay.h \
+  /opt/microchip/avr-gcc/avr/include/util/delay_basic.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdarg.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdbool.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stddef.h \
+  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdint.h
+
+CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/def.h \
+  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.h \
   /opt/microchip/avr-gcc/avr/include/avr/common.h \
   /opt/microchip/avr-gcc/avr/include/avr/fuse.h \
   /opt/microchip/avr-gcc/avr/include/avr/interrupt.h \
@@ -239,15 +302,9 @@ CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: /home/user13/Documents/MoonLab/Pr
   /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdint.h
 
 
-/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main8.c:
+/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c:
 
-/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main5.c:
-
-/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main3.c:
-
-/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main10.c:
-
-/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main.c:
+/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.h:
 
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.c:
 
@@ -259,13 +316,11 @@ CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: /home/user13/Documents/MoonLab/Pr
 
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/fnd.c:
 
-/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main2.c:
-
 /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdint.h:
 
-/opt/microchip/avr-gcc/avr/include/avr/common.h:
+/opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdbool.h:
 
-/opt/microchip/avr-gcc/avr/include/avr/fuse.h:
+/opt/microchip/avr-gcc/avr/include/avr/common.h:
 
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/i2c.h:
 
@@ -275,11 +330,7 @@ CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: /home/user13/Documents/MoonLab/Pr
 
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/def.h:
 
-/opt/microchip/avr-gcc/avr/include/string.h:
-
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/fnd.h:
-
-/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main4.c:
 
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/btn.c:
 
@@ -293,25 +344,37 @@ CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: /home/user13/Documents/MoonLab/Pr
 
 /opt/microchip/avr-gcc/avr/include/avr/sfr_defs.h:
 
-/opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdbool.h:
-
-/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main7.c:
-
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/i2c_lcd.h:
 
 /opt/microchip/avr-gcc/avr/include/avr/iom128.h:
 
 /opt/microchip/avr-gcc/avr/include/inttypes.h:
 
+/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c:
+
+/opt/microchip/avr-gcc/avr/include/string.h:
+
+/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.h:
+
+/opt/microchip/avr-gcc/avr/include/avr/interrupt.h:
+
+/opt/microchip/avr-gcc/avr/include/avr/portpins.h:
+
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.h:
 
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/led.h:
+
+/opt/microchip/avr-gcc/avr/include/avr/fuse.h:
 
 /opt/microchip/avr-gcc/avr/include/avr/io.h:
 
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/ap/ap.c:
 
+/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.h:
+
 /opt/microchip/avr-gcc/avr/include/stdio.h:
+
+/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c:
 
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/lcd_4bit.c:
 
@@ -319,11 +382,9 @@ CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: /home/user13/Documents/MoonLab/Pr
 
 /opt/microchip/avr-gcc/avr/include/avr/lock.h:
 
-/opt/microchip/avr-gcc/avr/include/avr/interrupt.h:
+/opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stddef.h:
 
-/opt/microchip/avr-gcc/avr/include/avr/portpins.h:
-
-/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main6.c:
+/opt/microchip/avr-gcc/avr/include/stdint.h:
 
 /opt/microchip/avr-gcc/avr/include/avr/version.h:
 
@@ -332,7 +393,3 @@ CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: /home/user13/Documents/MoonLab/Pr
 /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main9.c:
 
 /opt/microchip/avr-gcc/avr/include/util/delay_basic.h:
-
-/opt/microchip/avr-gcc/avr/include/stdint.h:
-
-/opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stddef.h:

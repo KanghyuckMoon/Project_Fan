@@ -370,222 +370,6 @@ src/driver/uart0.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.s
 .PHONY : src/driver/uart0.c.s
 
-src/main.obj: src/main.c.obj
-.PHONY : src/main.obj
-
-# target to build an object file
-src/main.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main.c.obj
-.PHONY : src/main.c.obj
-
-src/main.i: src/main.c.i
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main.c.i
-.PHONY : src/main.c.i
-
-src/main.s: src/main.c.s
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main.c.s
-.PHONY : src/main.c.s
-
-src/main10.obj: src/main10.c.obj
-.PHONY : src/main10.obj
-
-# target to build an object file
-src/main10.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main10.c.obj
-.PHONY : src/main10.c.obj
-
-src/main10.i: src/main10.c.i
-.PHONY : src/main10.i
-
-# target to preprocess a source file
-src/main10.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main10.c.i
-.PHONY : src/main10.c.i
-
-src/main10.s: src/main10.c.s
-.PHONY : src/main10.s
-
-# target to generate assembly for a file
-src/main10.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main10.c.s
-.PHONY : src/main10.c.s
-
-src/main2.obj: src/main2.c.obj
-.PHONY : src/main2.obj
-
-# target to build an object file
-src/main2.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main2.c.obj
-.PHONY : src/main2.c.obj
-
-src/main2.i: src/main2.c.i
-.PHONY : src/main2.i
-
-# target to preprocess a source file
-src/main2.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main2.c.i
-.PHONY : src/main2.c.i
-
-src/main2.s: src/main2.c.s
-.PHONY : src/main2.s
-
-# target to generate assembly for a file
-src/main2.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main2.c.s
-.PHONY : src/main2.c.s
-
-src/main3.obj: src/main3.c.obj
-.PHONY : src/main3.obj
-
-# target to build an object file
-src/main3.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main3.c.obj
-.PHONY : src/main3.c.obj
-
-src/main3.i: src/main3.c.i
-.PHONY : src/main3.i
-
-# target to preprocess a source file
-src/main3.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main3.c.i
-.PHONY : src/main3.c.i
-
-src/main3.s: src/main3.c.s
-.PHONY : src/main3.s
-
-# target to generate assembly for a file
-src/main3.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main3.c.s
-.PHONY : src/main3.c.s
-
-src/main4.obj: src/main4.c.obj
-.PHONY : src/main4.obj
-
-# target to build an object file
-src/main4.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main4.c.obj
-.PHONY : src/main4.c.obj
-
-src/main4.i: src/main4.c.i
-.PHONY : src/main4.i
-
-# target to preprocess a source file
-src/main4.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main4.c.i
-.PHONY : src/main4.c.i
-
-src/main4.s: src/main4.c.s
-.PHONY : src/main4.s
-
-# target to generate assembly for a file
-src/main4.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main4.c.s
-.PHONY : src/main4.c.s
-
-src/main5.obj: src/main5.c.obj
-.PHONY : src/main5.obj
-
-# target to build an object file
-src/main5.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main5.c.obj
-.PHONY : src/main5.c.obj
-
-src/main5.i: src/main5.c.i
-.PHONY : src/main5.i
-
-# target to preprocess a source file
-src/main5.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main5.c.i
-.PHONY : src/main5.c.i
-
-src/main5.s: src/main5.c.s
-.PHONY : src/main5.s
-
-# target to generate assembly for a file
-src/main5.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main5.c.s
-.PHONY : src/main5.c.s
-
-src/main6.obj: src/main6.c.obj
-.PHONY : src/main6.obj
-
-# target to build an object file
-src/main6.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main6.c.obj
-.PHONY : src/main6.c.obj
-
-src/main6.i: src/main6.c.i
-.PHONY : src/main6.i
-
-# target to preprocess a source file
-src/main6.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main6.c.i
-.PHONY : src/main6.c.i
-
-src/main6.s: src/main6.c.s
-.PHONY : src/main6.s
-
-# target to generate assembly for a file
-src/main6.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main6.c.s
-.PHONY : src/main6.c.s
-
-src/main7.obj: src/main7.c.obj
-.PHONY : src/main7.obj
-
-# target to build an object file
-src/main7.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main7.c.obj
-.PHONY : src/main7.c.obj
-
-src/main7.i: src/main7.c.i
-.PHONY : src/main7.i
-
-# target to preprocess a source file
-src/main7.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main7.c.i
-.PHONY : src/main7.c.i
-
-src/main7.s: src/main7.c.s
-.PHONY : src/main7.s
-
-# target to generate assembly for a file
-src/main7.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main7.c.s
-.PHONY : src/main7.c.s
-
-src/main8.obj: src/main8.c.obj
-.PHONY : src/main8.obj
-
-# target to build an object file
-src/main8.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main8.c.obj
-.PHONY : src/main8.c.obj
-
-src/main8.i: src/main8.c.i
-.PHONY : src/main8.i
-
-# target to preprocess a source file
-src/main8.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main8.c.i
-.PHONY : src/main8.c.i
-
-src/main8.s: src/main8.c.s
-.PHONY : src/main8.s
-
-# target to generate assembly for a file
-src/main8.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main8.c.s
-.PHONY : src/main8.c.s
-
 src/main9.obj: src/main9.c.obj
 .PHONY : src/main9.obj
 
@@ -609,6 +393,78 @@ src/main9.s: src/main9.c.s
 src/main9.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/main9.c.s
 .PHONY : src/main9.c.s
+
+src/project/debug.obj: src/project/debug.c.obj
+.PHONY : src/project/debug.obj
+
+# target to build an object file
+src/project/debug.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj
+.PHONY : src/project/debug.c.obj
+
+src/project/debug.i: src/project/debug.c.i
+.PHONY : src/project/debug.i
+
+# target to preprocess a source file
+src/project/debug.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/debug.c.i
+.PHONY : src/project/debug.c.i
+
+src/project/debug.s: src/project/debug.c.s
+.PHONY : src/project/debug.s
+
+# target to generate assembly for a file
+src/project/debug.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/debug.c.s
+.PHONY : src/project/debug.c.s
+
+src/project/servo.obj: src/project/servo.c.obj
+.PHONY : src/project/servo.obj
+
+# target to build an object file
+src/project/servo.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj
+.PHONY : src/project/servo.c.obj
+
+src/project/servo.i: src/project/servo.c.i
+.PHONY : src/project/servo.i
+
+# target to preprocess a source file
+src/project/servo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/servo.c.i
+.PHONY : src/project/servo.c.i
+
+src/project/servo.s: src/project/servo.c.s
+.PHONY : src/project/servo.s
+
+# target to generate assembly for a file
+src/project/servo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/servo.c.s
+.PHONY : src/project/servo.c.s
+
+src/project/tick.obj: src/project/tick.c.obj
+.PHONY : src/project/tick.obj
+
+# target to build an object file
+src/project/tick.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj
+.PHONY : src/project/tick.c.obj
+
+src/project/tick.i: src/project/tick.c.i
+.PHONY : src/project/tick.i
+
+# target to preprocess a source file
+src/project/tick.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/tick.c.i
+.PHONY : src/project/tick.c.i
+
+src/project/tick.s: src/project/tick.c.s
+.PHONY : src/project/tick.s
+
+# target to generate assembly for a file
+src/project/tick.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/tick.c.s
+.PHONY : src/project/tick.c.s
 
 # Help Target
 help:
@@ -649,36 +505,18 @@ help:
 	@echo "... src/driver/uart0.obj"
 	@echo "... src/driver/uart0.i"
 	@echo "... src/driver/uart0.s"
-	@echo "... src/main.obj"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/main10.obj"
-	@echo "... src/main10.i"
-	@echo "... src/main10.s"
-	@echo "... src/main2.obj"
-	@echo "... src/main2.i"
-	@echo "... src/main2.s"
-	@echo "... src/main3.obj"
-	@echo "... src/main3.i"
-	@echo "... src/main3.s"
-	@echo "... src/main4.obj"
-	@echo "... src/main4.i"
-	@echo "... src/main4.s"
-	@echo "... src/main5.obj"
-	@echo "... src/main5.i"
-	@echo "... src/main5.s"
-	@echo "... src/main6.obj"
-	@echo "... src/main6.i"
-	@echo "... src/main6.s"
-	@echo "... src/main7.obj"
-	@echo "... src/main7.i"
-	@echo "... src/main7.s"
-	@echo "... src/main8.obj"
-	@echo "... src/main8.i"
-	@echo "... src/main8.s"
 	@echo "... src/main9.obj"
 	@echo "... src/main9.i"
 	@echo "... src/main9.s"
+	@echo "... src/project/debug.obj"
+	@echo "... src/project/debug.i"
+	@echo "... src/project/debug.s"
+	@echo "... src/project/servo.obj"
+	@echo "... src/project/servo.i"
+	@echo "... src/project/servo.s"
+	@echo "... src/project/tick.obj"
+	@echo "... src/project/tick.i"
+	@echo "... src/project/tick.s"
 .PHONY : help
 
 

@@ -1,8 +1,19 @@
 #include "ap.h"
 
+// int main(void)
+// {
+//     ServoInit();
+//     uartInit();
+//     SetRotateMode();
+//     while(1)
+//     {
+//         ServoMain();
+//         TickMain();
+//     }
+// }   
+
 int main(void)
-{
-    // OC1A = PB5
+{    
     DDRB = 0xFF;
     DDRB |= (1 << PB5);
 
@@ -22,9 +33,7 @@ int main(void)
     TCCR1C = 0;
 
     ICR1 = 4999;
-
-    int count = 0;
-    while (1)
+    while(1)
     {
         OCR1A = 100;
         _delay_ms(500);
@@ -37,4 +46,5 @@ int main(void)
         OCR1A = 600;
         _delay_ms(500);
     }
-}   
+
+}

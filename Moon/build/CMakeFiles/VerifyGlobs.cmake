@@ -42,16 +42,10 @@ set(OLD_GLOB
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/lcd_8bit.c"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/led.c"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.c"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main.c"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main10.c"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main2.c"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main3.c"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main4.c"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main5.c"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main6.c"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main7.c"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main8.c"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main9.c"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

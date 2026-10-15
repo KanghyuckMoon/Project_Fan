@@ -5,6 +5,7 @@
 
 void uartInit();
 void uartTransmit(char data);
+void uartTransmitString(const char* string);
 unsigned char uartReceive();
 
 #endif

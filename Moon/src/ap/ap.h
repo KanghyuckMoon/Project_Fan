@@ -10,6 +10,8 @@
 //#include "lcd_8bit.h"
 //#include "lcd_4bit.h"
 #include "i2c_lcd.h"
+#include "debug.h"
+#include "tick.h"
 
 
 extern Button_t btnOn;

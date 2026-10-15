@@ -18,16 +18,10 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/lcd_8bit.c" "CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj.d"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/led.c" "CMakeFiles/atmega128a.elf.dir/src/driver/led.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/driver/led.c.obj.d"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.c" "CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.obj.d"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main.c" "CMakeFiles/atmega128a.elf.dir/src/main.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main.c.obj.d"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main10.c" "CMakeFiles/atmega128a.elf.dir/src/main10.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main10.c.obj.d"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main2.c" "CMakeFiles/atmega128a.elf.dir/src/main2.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main2.c.obj.d"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main3.c" "CMakeFiles/atmega128a.elf.dir/src/main3.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main3.c.obj.d"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main4.c" "CMakeFiles/atmega128a.elf.dir/src/main4.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main4.c.obj.d"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main5.c" "CMakeFiles/atmega128a.elf.dir/src/main5.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main5.c.obj.d"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main6.c" "CMakeFiles/atmega128a.elf.dir/src/main6.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main6.c.obj.d"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main7.c" "CMakeFiles/atmega128a.elf.dir/src/main7.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main7.c.obj.d"
-  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main8.c" "CMakeFiles/atmega128a.elf.dir/src/main8.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main8.c.obj.d"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main9.c" "CMakeFiles/atmega128a.elf.dir/src/main9.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main9.c.obj.d"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c" "CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj.d"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c" "CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj.d"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c" "CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

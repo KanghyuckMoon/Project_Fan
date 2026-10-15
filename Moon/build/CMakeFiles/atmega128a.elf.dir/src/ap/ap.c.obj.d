@@ -28,4 +28,6 @@ CMakeFiles/atmega128a.elf.dir/src/ap/ap.c.obj: \
  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/fnd4.h \
  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.h \
  /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/i2c_lcd.h \
- /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/i2c.h
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/i2c.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.h

@@ -4,7 +4,7 @@
 # compile C with /opt/microchip/avr-gcc/bin/avr-gcc
 C_DEFINES = -DF_CPU=16000000UL
 
-C_INCLUDES = -I/home/user13/Documents/MoonLab/Project_Fan/Moon -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/ap -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/bsp -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/hw -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/common -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/hw/include
+C_INCLUDES = -I/home/user13/Documents/MoonLab/Project_Fan/Moon -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/ap -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/bsp -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/hw -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/common -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/hw/include
 
 C_FLAGS = -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3
 

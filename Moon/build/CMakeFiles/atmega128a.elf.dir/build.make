@@ -209,136 +209,10 @@ CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.s"
 	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.c -o CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.s
 
-CMakeFiles/atmega128a.elf.dir/src/main.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
-CMakeFiles/atmega128a.elf.dir/src/main.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main.c
-CMakeFiles/atmega128a.elf.dir/src/main.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/atmega128a.elf.dir/src/main.c.obj"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main.c
-
-CMakeFiles/atmega128a.elf.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/main.c.i"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main.c > CMakeFiles/atmega128a.elf.dir/src/main.c.i
-
-CMakeFiles/atmega128a.elf.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main.c.s"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main.c -o CMakeFiles/atmega128a.elf.dir/src/main.c.s
-
-CMakeFiles/atmega128a.elf.dir/src/main10.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
-CMakeFiles/atmega128a.elf.dir/src/main10.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main10.c
-CMakeFiles/atmega128a.elf.dir/src/main10.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/atmega128a.elf.dir/src/main10.c.obj"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main10.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main10.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main10.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main10.c
-
-CMakeFiles/atmega128a.elf.dir/src/main10.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/main10.c.i"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main10.c > CMakeFiles/atmega128a.elf.dir/src/main10.c.i
-
-CMakeFiles/atmega128a.elf.dir/src/main10.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main10.c.s"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main10.c -o CMakeFiles/atmega128a.elf.dir/src/main10.c.s
-
-CMakeFiles/atmega128a.elf.dir/src/main2.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
-CMakeFiles/atmega128a.elf.dir/src/main2.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main2.c
-CMakeFiles/atmega128a.elf.dir/src/main2.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/atmega128a.elf.dir/src/main2.c.obj"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main2.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main2.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main2.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main2.c
-
-CMakeFiles/atmega128a.elf.dir/src/main2.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/main2.c.i"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main2.c > CMakeFiles/atmega128a.elf.dir/src/main2.c.i
-
-CMakeFiles/atmega128a.elf.dir/src/main2.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main2.c.s"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main2.c -o CMakeFiles/atmega128a.elf.dir/src/main2.c.s
-
-CMakeFiles/atmega128a.elf.dir/src/main3.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
-CMakeFiles/atmega128a.elf.dir/src/main3.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main3.c
-CMakeFiles/atmega128a.elf.dir/src/main3.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/atmega128a.elf.dir/src/main3.c.obj"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main3.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main3.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main3.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main3.c
-
-CMakeFiles/atmega128a.elf.dir/src/main3.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/main3.c.i"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main3.c > CMakeFiles/atmega128a.elf.dir/src/main3.c.i
-
-CMakeFiles/atmega128a.elf.dir/src/main3.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main3.c.s"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main3.c -o CMakeFiles/atmega128a.elf.dir/src/main3.c.s
-
-CMakeFiles/atmega128a.elf.dir/src/main4.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
-CMakeFiles/atmega128a.elf.dir/src/main4.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main4.c
-CMakeFiles/atmega128a.elf.dir/src/main4.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/atmega128a.elf.dir/src/main4.c.obj"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main4.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main4.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main4.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main4.c
-
-CMakeFiles/atmega128a.elf.dir/src/main4.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/main4.c.i"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main4.c > CMakeFiles/atmega128a.elf.dir/src/main4.c.i
-
-CMakeFiles/atmega128a.elf.dir/src/main4.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main4.c.s"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main4.c -o CMakeFiles/atmega128a.elf.dir/src/main4.c.s
-
-CMakeFiles/atmega128a.elf.dir/src/main5.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
-CMakeFiles/atmega128a.elf.dir/src/main5.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main5.c
-CMakeFiles/atmega128a.elf.dir/src/main5.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/atmega128a.elf.dir/src/main5.c.obj"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main5.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main5.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main5.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main5.c
-
-CMakeFiles/atmega128a.elf.dir/src/main5.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/main5.c.i"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main5.c > CMakeFiles/atmega128a.elf.dir/src/main5.c.i
-
-CMakeFiles/atmega128a.elf.dir/src/main5.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main5.c.s"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main5.c -o CMakeFiles/atmega128a.elf.dir/src/main5.c.s
-
-CMakeFiles/atmega128a.elf.dir/src/main6.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
-CMakeFiles/atmega128a.elf.dir/src/main6.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main6.c
-CMakeFiles/atmega128a.elf.dir/src/main6.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/atmega128a.elf.dir/src/main6.c.obj"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main6.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main6.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main6.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main6.c
-
-CMakeFiles/atmega128a.elf.dir/src/main6.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/main6.c.i"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main6.c > CMakeFiles/atmega128a.elf.dir/src/main6.c.i
-
-CMakeFiles/atmega128a.elf.dir/src/main6.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main6.c.s"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main6.c -o CMakeFiles/atmega128a.elf.dir/src/main6.c.s
-
-CMakeFiles/atmega128a.elf.dir/src/main7.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
-CMakeFiles/atmega128a.elf.dir/src/main7.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main7.c
-CMakeFiles/atmega128a.elf.dir/src/main7.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/atmega128a.elf.dir/src/main7.c.obj"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main7.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main7.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main7.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main7.c
-
-CMakeFiles/atmega128a.elf.dir/src/main7.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/main7.c.i"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main7.c > CMakeFiles/atmega128a.elf.dir/src/main7.c.i
-
-CMakeFiles/atmega128a.elf.dir/src/main7.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main7.c.s"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main7.c -o CMakeFiles/atmega128a.elf.dir/src/main7.c.s
-
-CMakeFiles/atmega128a.elf.dir/src/main8.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
-CMakeFiles/atmega128a.elf.dir/src/main8.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main8.c
-CMakeFiles/atmega128a.elf.dir/src/main8.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/atmega128a.elf.dir/src/main8.c.obj"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main8.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main8.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main8.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main8.c
-
-CMakeFiles/atmega128a.elf.dir/src/main8.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/main8.c.i"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main8.c > CMakeFiles/atmega128a.elf.dir/src/main8.c.i
-
-CMakeFiles/atmega128a.elf.dir/src/main8.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main8.c.s"
-	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main8.c -o CMakeFiles/atmega128a.elf.dir/src/main8.c.s
-
 CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
 CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main9.c
 CMakeFiles/atmega128a.elf.dir/src/main9.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/atmega128a.elf.dir/src/main9.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/atmega128a.elf.dir/src/main9.c.obj"
 	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/main9.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/main9.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/main9.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main9.c
 
 CMakeFiles/atmega128a.elf.dir/src/main9.c.i: cmake_force
@@ -348,6 +222,48 @@ CMakeFiles/atmega128a.elf.dir/src/main9.c.i: cmake_force
 CMakeFiles/atmega128a.elf.dir/src/main9.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/main9.c.s"
 	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/main9.c -o CMakeFiles/atmega128a.elf.dir/src/main9.c.s
+
+CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
+CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c
+CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj"
+	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c
+
+CMakeFiles/atmega128a.elf.dir/src/project/debug.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/project/debug.c.i"
+	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c > CMakeFiles/atmega128a.elf.dir/src/project/debug.c.i
+
+CMakeFiles/atmega128a.elf.dir/src/project/debug.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/project/debug.c.s"
+	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c -o CMakeFiles/atmega128a.elf.dir/src/project/debug.c.s
+
+CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
+CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c
+CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj"
+	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c
+
+CMakeFiles/atmega128a.elf.dir/src/project/servo.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/project/servo.c.i"
+	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c > CMakeFiles/atmega128a.elf.dir/src/project/servo.c.i
+
+CMakeFiles/atmega128a.elf.dir/src/project/servo.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/project/servo.c.s"
+	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c -o CMakeFiles/atmega128a.elf.dir/src/project/servo.c.s
+
+CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj: CMakeFiles/atmega128a.elf.dir/flags.make
+CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj: /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c
+CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj: CMakeFiles/atmega128a.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj"
+	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj -MF CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj.d -o CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c
+
+CMakeFiles/atmega128a.elf.dir/src/project/tick.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/atmega128a.elf.dir/src/project/tick.c.i"
+	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c > CMakeFiles/atmega128a.elf.dir/src/project/tick.c.i
+
+CMakeFiles/atmega128a.elf.dir/src/project/tick.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/atmega128a.elf.dir/src/project/tick.c.s"
+	/opt/microchip/avr-gcc/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c -o CMakeFiles/atmega128a.elf.dir/src/project/tick.c.s
 
 # Object files for target atmega128a.elf
 atmega128a_elf_OBJECTS = \
@@ -361,16 +277,10 @@ atmega128a_elf_OBJECTS = \
 "CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj" \
 "CMakeFiles/atmega128a.elf.dir/src/driver/led.c.obj" \
 "CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main10.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main2.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main3.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main4.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main5.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main6.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main7.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main8.c.obj" \
-"CMakeFiles/atmega128a.elf.dir/src/main9.c.obj"
+"CMakeFiles/atmega128a.elf.dir/src/main9.c.obj" \
+"CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj" \
+"CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj" \
+"CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj"
 
 # External object files for target atmega128a.elf
 atmega128a_elf_EXTERNAL_OBJECTS =
@@ -385,19 +295,13 @@ atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/driver/lcd_4bit.c.obj
 atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/driver/lcd_8bit.c.obj
 atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/driver/led.c.obj
 atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/driver/uart0.c.obj
-atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main.c.obj
-atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main10.c.obj
-atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main2.c.obj
-atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main3.c.obj
-atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main4.c.obj
-atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main5.c.obj
-atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main6.c.obj
-atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main7.c.obj
-atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main8.c.obj
 atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/main9.c.obj
+atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj
+atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj
+atmega128a.elf: CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj
 atmega128a.elf: CMakeFiles/atmega128a.elf.dir/build.make
 atmega128a.elf: CMakeFiles/atmega128a.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking C executable atmega128a.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/user13/Documents/MoonLab/Project_Fan/Moon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable atmega128a.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/atmega128a.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Generating ATmega128A HEX file"
 	/opt/microchip/avr-gcc/bin/avr-objcopy -O ihex -R .eeprom /home/user13/Documents/MoonLab/Project_Fan/Moon/build/atmega128a.elf /home/user13/Documents/MoonLab/Project_Fan/Moon/build/atmega128a.hex
