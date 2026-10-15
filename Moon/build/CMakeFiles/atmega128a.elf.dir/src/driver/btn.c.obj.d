@@ -1,6 +1,6 @@
 CMakeFiles/atmega128a.elf.dir/src/driver/btn.c.obj: \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/btn.c \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/btn.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/btn.c \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/btn.h \
  /opt/microchip/avr-gcc/avr/include/avr/io.h \
  /opt/microchip/avr-gcc/avr/include/avr/sfr_defs.h \
  /opt/microchip/avr-gcc/avr/include/inttypes.h \

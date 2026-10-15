@@ -7,14 +7,14 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/CMakeLists.txt"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/CMakeLists.txt"
   "CMakeFiles/3.28.3/CMakeASMCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.28.3/CMakeSystem.cmake"
   "CMakeFiles/VerifyGlobs.cmake"
   "CMakeFiles/cmake.verify_globs"
-  "/home/user13/Documents/MoonLab/lab_AVR/AVRProject/tools/avr-toolchain.cmake"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/tools/avr-toolchain.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeASMInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"

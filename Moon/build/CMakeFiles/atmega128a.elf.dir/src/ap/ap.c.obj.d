@@ -1,7 +1,7 @@
 CMakeFiles/atmega128a.elf.dir/src/ap/ap.c.obj: \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap/ap.c \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/ap/ap.h \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/common/def.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/ap/ap.c \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/ap/ap.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/def.h \
  /opt/microchip/avr-gcc/avr/include/stdio.h \
  /opt/microchip/avr-gcc/avr/include/inttypes.h \
  /opt/microchip/avr-gcc/lib/gcc/avr/15.1.0/include/stdint.h \
@@ -22,10 +22,12 @@ CMakeFiles/atmega128a.elf.dir/src/ap/ap.c.obj: \
  /opt/microchip/avr-gcc/avr/include/util/delay.h \
  /opt/microchip/avr-gcc/avr/include/util/delay_basic.h \
  /opt/microchip/avr-gcc/avr/include/avr/interrupt.h \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/led.h \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/btn.h \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/fnd.h \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/fnd4.h \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/uart0.h \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/i2c_lcd.h \
- /home/user13/Documents/MoonLab/lab_AVR/AVRProject/src/driver/i2c.h
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/led.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/btn.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/fnd.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/fnd4.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/uart0.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/i2c_lcd.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver/i2c.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.h \
+ /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.h
