@@ -113,19 +113,57 @@ uint16_t TOUCH_ReadY(void)
     return TOUCH_ReadADC(0x90);
 }
 
+static uint16_t TOUCH_Median5(uint16_t values[5])
+{
+    uint16_t temp;
+
+    for (uint8_t i = 0; i < 5; i++)
+    {
+        for (uint8_t j = i + 1; j < 5; j++)
+        {
+            if (values[i] > values[j])
+            {
+                temp = values[i];
+                values[i] = values[j];
+                values[j] = temp;
+            }
+        }
+    }
+
+    return values[2];
+}
+
 // 터치 좌표 읽기
 uint8_t TOUCH_GetXY(uint16_t *x, uint16_t *y)
 {
+    uint16_t x_values[5];
+    uint16_t y_values[5];
+
+    // 터치 여부 확인
     if (!TOUCH_IsPressed())
         return 0;
 
-    _delay_ms(10);
+    // 접촉 안정화 대기
+    _delay_ms(20);
 
     if (!TOUCH_IsPressed())
         return 0;
 
-    *x = TOUCH_ReadX();
-    *y = TOUCH_ReadY();
+    // 좌표 5회 측정
+    for (uint8_t i = 0; i < 5; i++)
+    {
+        x_values[i] = TOUCH_ReadX();
+        y_values[i] = TOUCH_ReadY();
+        _delay_ms(3);
+    }
+
+    // 측정 중 손을 뗐다면 무시
+    if (!TOUCH_IsPressed())
+        return 0;
+
+    // 중앙값 적용
+    *x = TOUCH_Median5(x_values);
+    *y = TOUCH_Median5(y_values);
 
     return 1;
 }
