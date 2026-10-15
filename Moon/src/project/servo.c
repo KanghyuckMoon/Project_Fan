@@ -3,6 +3,10 @@
 static uint8_t servo_state = 0;
 uint8_t rotateIndex = 0;
 
+static int servoDirection = 1;
+static uint16_t servoOCR = 250;
+static uint32_t prevTick = 0;
+
 void ServoInit(void)
 {
     DDRB = 0xFF;
@@ -42,35 +46,43 @@ void SetTrackingMode(void)
     servo_state = Mode_Tracking;
 }
 
-
 void ServoMain(void)
 {
-    if (tick % 500 != 0)
+    // 20ms마다 한 번만 갱신
+    if (tick - prevTick < 20)
     {
         return;
     }
 
-    switch(servo_state)
+    prevTick = tick;
+
+    switch (servo_state)
     {
         case Mode_None:
             break;
+
         case Mode_Rotate:
-            DebugLog("Rotate Index %d", rotateIndex);
-            rotateIndex = rotateIndex % 3;
-            if(rotateIndex == 0)
+            servoOCR += servoDirection * 2;
+
+            // 오른쪽 끝
+            if (servoOCR >= 500)
             {
-                OCR1A = 100;
+                servoOCR = 500;
+                servoDirection = -1;
             }
-            else if(rotateIndex == 1)
+
+            // 왼쪽 끝
+            else if (servoOCR <= 250)
             {
-                OCR1A = 350;
+                servoOCR = 250;
+                servoDirection = 1;
             }
-            else if(rotateIndex == 2)
-            {
-                OCR1A = 600;
-            }
-            rotateIndex++;
+
+            OCR1A = servoOCR;
+
+            DebugLog("Servo OCR: %d\r\n", servoOCR);
             break;
+
         case Mode_Tracking:
             break;
     }
