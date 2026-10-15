@@ -4,24 +4,6 @@
 #include <util/delay.h>
 #include <stdint.h>
 
-#define TFT_PORT PORTC
-#define TFT_DDR  DDRC
-
-#define TFT_CS   PC0
-#define TFT_RST  PC1
-#define TFT_DC   PC2
-#define TFT_MOSI PC3
-#define TFT_SCK  PC4
-
-#define CS_LOW()    (TFT_PORT &= ~(1 << TFT_CS))
-#define CS_HIGH()   (TFT_PORT |=  (1 << TFT_CS))
-
-#define DC_LOW()    (TFT_PORT &= ~(1 << TFT_DC))
-#define DC_HIGH()   (TFT_PORT |=  (1 << TFT_DC))
-
-#define RST_LOW()   (TFT_PORT &= ~(1 << TFT_RST))
-#define RST_HIGH()  (TFT_PORT |=  (1 << TFT_RST))
-
 void SPI_Write(uint8_t data)
 {
     for (uint8_t i = 0; i < 8; i++)

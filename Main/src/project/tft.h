@@ -3,14 +3,23 @@
 
 #include "def.h"
 
-#define TFT_PORT PORTC
-#define TFT_DDR  DDRC
+#define TFT_PORT PORTB
+#define TFT_DDR  DDRB
 
-#define TFT_CS   PC0
-#define TFT_RST  PC1
-#define TFT_DC   PC2
-#define TFT_MOSI PC3
-#define TFT_SCK  PC4
+#define TFT_CS   PB0
+#define TFT_SCK  PB1
+#define TFT_MOSI PB2
+
+#define TFT_RST  PB5    // 보통 RST나 DC는 남는 일반 GPIO 아무거나 할당 (예: PB5)
+#define TFT_DC   PB6    // 일반 GPIO 할당 (예: PB6)
+
+#define TFT_RST_PORT PORTA
+#define TFT_RST_DDR  DDRA
+#define TFT_RST      PA0
+
+#define TFT_DC_PORT  PORTA
+#define TFT_DC_DDR   DDRA
+#define TFT_DC       PA1
 
 #define CS_LOW()    (TFT_PORT &= ~(1 << TFT_CS))
 #define CS_HIGH()   (TFT_PORT |=  (1 << TFT_CS))

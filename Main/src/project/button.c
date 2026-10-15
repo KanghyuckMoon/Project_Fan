@@ -2,17 +2,18 @@
 
 
 
-Button btnOnOff;
-Button btnLow;
-Button btnMid;
-Button btnHigh;
+Button btnSpeed;
+Button btnRotate;
+    uint8_t speed = 0;
+    uint8_t rotate = 0;
 
 void ButtonSystemInit()
 {
-    buttonInit(&btnOnOff, &BUTTON_DDR, &BUTTON_PIN, BUTTON_ON);
-    buttonInit(&btnLow,   &BUTTON_DDR, &BUTTON_PIN, BUTTON_OFF);
-    buttonInit(&btnMid,   &BUTTON_DDR, &BUTTON_PIN, BUTTON_RIGHT);
-    buttonInit(&btnHigh,  &BUTTON_DDR, &BUTTON_PIN, BUTTON_LEFT);
+    // 버튼 1 : 풍속 변경
+    buttonInit(&btnSpeed, &BUTTON_DDR, &BUTTON_PIN, BUTTON_ON);
+
+    // 버튼 2 : 회전 ON / OFF
+    buttonInit(&btnRotate, &BUTTON_DDR, &BUTTON_PIN, BUTTON_OFF);
 }
 
 void buttonInit(Button *button, volatile uint8_t *ddr, volatile uint8_t *pin, uint8_t pinNum)
@@ -46,42 +47,60 @@ uint8_t buttonGetState(Button *button)
 
 void ButtonMain()
 {
-        // ========================================
-        // 버튼 1 : 팬 ON / OFF
-        // ========================================
 
-        if(buttonGetState(&btnOnOff) == ACT_RELEASE)
+        if(buttonGetState(&btnSpeed) == ACT_RELEASE)
         {
-            fanToggle();
+            speed++;
+
+
+            if(speed > 3)
+            {
+                speed = 0;
+            }
+
+
+            switch(speed)
+            {
+                case 0:
+                    fanOff();
+                    break;
+
+
+                case 1:
+                    fanLow();
+                    break;
+
+
+                case 2:
+                    fanMid();
+                    break;
+
+
+                case 3:
+                    fanHigh();
+                    break;
+            }
         }
 
 
         // ========================================
-        // 버튼 2 : 약풍
+        // 버튼 2 : 회전 ON / OFF
         // ========================================
 
-        if(buttonGetState(&btnLow) == ACT_RELEASE)
+        if(buttonGetState(&btnRotate) == ACT_RELEASE)
         {
-            fanLow();
-        }
+            rotate = !rotate;
 
 
-        // ========================================
-        // 버튼 3 : 중풍
-        // ========================================
-
-        if(buttonGetState(&btnMid) == ACT_RELEASE)
-        {
-            fanMid();
-        }
-
-
-        // ========================================
-        // 버튼 4 : 강풍
-        // ========================================
-
-        if(buttonGetState(&btnHigh) == ACT_RELEASE)
-        {
-            fanHigh();
+            if(rotate)
+            {
+                // 회전 시작
+                SetRotateMode();
+            }
+            else
+            {
+                // 회전 정지
+                SetNoneMode();
+            }
         }
 }
