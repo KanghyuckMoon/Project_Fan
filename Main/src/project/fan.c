@@ -1,5 +1,5 @@
 #include "fan.h"
-
+#include "debug.h"
 
 #define FAN_LOW     128
 #define FAN_MID     192

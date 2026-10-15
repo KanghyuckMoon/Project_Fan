@@ -34,3 +34,12 @@ unsigned char uartReceive()
     while (!(UCSR0A & (1 << RXC0)));    // 데이터 수신대기
     return UDR0;
 }
+
+void uartTransmitString(const char* string)
+{
+    while (*string != '\0')
+    {
+        uartTransmit(*string);
+        string++;
+    }
+}

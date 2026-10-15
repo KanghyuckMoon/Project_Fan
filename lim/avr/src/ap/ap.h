@@ -9,6 +9,9 @@
 // //#include "lcd_4bit.h"
 // #include "i2c_lcd.h"
 #include "fan.h"
+#include "servo.h"
+#include "tick.h"
+#include "debug.h"
 
 void apInit();
 void apMain();

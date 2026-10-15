@@ -1,67 +1,139 @@
 #include "ap.h"
 
 
-Button btnOnOff;
-Button btnLow;
-Button btnMid;
-Button btnHigh;
+Button btnSpeed;
+Button btnRotate;
 
 
 void apInit(void)
 {
+    // ========================================
     // 팬 초기화
+    // ========================================
+
     fanInit();
 
 
+    // ========================================
+    // 서보 초기화
+    // ========================================
+
+    ServoInit();
+    SetRotateMode();
+
+    // ========================================
     // 버튼 초기화
-    buttonInit(&btnOnOff, &BUTTON_DDR, &BUTTON_PIN, BUTTON_ON);
-    buttonInit(&btnLow,   &BUTTON_DDR, &BUTTON_PIN, BUTTON_OFF);
-    buttonInit(&btnMid,   &BUTTON_DDR, &BUTTON_PIN, BUTTON_RIGHT);
-    buttonInit(&btnHigh,  &BUTTON_DDR, &BUTTON_PIN, BUTTON_LEFT);
+    // ========================================
+
+    // 버튼 1 : 풍속 변경
+    buttonInit(&btnSpeed, &BUTTON_DDR, &BUTTON_PIN, BUTTON_ON);
+
+    // 버튼 2 : 회전 ON / OFF
+    buttonInit(&btnRotate, &BUTTON_DDR, &BUTTON_PIN, BUTTON_OFF);
 }
 
 
 void apMain(void)
 {
+    // ========================================
+    // 풍속 상태
+    //
+    // 0 = 정지
+    // 1 = 약풍
+    // 2 = 중풍
+    // 3 = 강풍
+    // ========================================
+
+    uint8_t speed = 0;
+
+
+    // ========================================
+    // 회전 상태
+    //
+    // 0 = 정지
+    // 1 = 회전
+    // ========================================
+
+    uint8_t rotate = 0;
+
+
     while(1)
     {
+        DebugLog("Check0");
         // ========================================
-        // 버튼 1 : 팬 ON / OFF
+        // Tick 처리
         // ========================================
 
-        if(buttonGetState(&btnOnOff) == ACT_RELEASE)
+        TickMain();
+
+
+        // ========================================
+        // 버튼 1 : 풍속 변경
+        //
+        // 정지 → 약풍 → 중풍 → 강풍 → 정지
+        // ========================================
+
+        if(buttonGetState(&btnSpeed) == ACT_RELEASE)
         {
-            fanToggle();
+            speed++;
+
+
+            if(speed > 3)
+            {
+                speed = 0;
+            }
+
+
+            switch(speed)
+            {
+                case 0:
+                    fanOff();
+                    break;
+
+
+                case 1:
+                    fanLow();
+                    break;
+
+
+                case 2:
+                    fanMid();
+                    break;
+
+
+                case 3:
+                    fanHigh();
+                    break;
+            }
         }
 
 
         // ========================================
-        // 버튼 2 : 약풍
+        // 버튼 2 : 회전 ON / OFF
         // ========================================
 
-        if(buttonGetState(&btnLow) == ACT_RELEASE)
+        if(buttonGetState(&btnRotate) == ACT_RELEASE)
         {
-            fanLow();
+            rotate = !rotate;
+
+
+            if(rotate)
+            {
+                // 회전 시작
+                SetRotateMode();
+            }
+            else
+            {
+                // 회전 정지
+                SetNoneMode();
+            }
         }
 
 
         // ========================================
-        // 버튼 3 : 중풍
+        // 서보 회전 처리
         // ========================================
-
-        if(buttonGetState(&btnMid) == ACT_RELEASE)
-        {
-            fanMid();
-        }
-
-
-        // ========================================
-        // 버튼 4 : 강풍
-        // ========================================
-
-        if(buttonGetState(&btnHigh) == ACT_RELEASE)
-        {
-            fanHigh();
-        }
+        DebugLog("Check1");
+        ServoMain();
     }
 }
