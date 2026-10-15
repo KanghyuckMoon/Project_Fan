@@ -5,6 +5,9 @@
 #define FAN_MID     192
 #define FAN_HIGH    255
 
+bool isOn;
+int previouseSpeed;
+
 
 void fanInit(void)
 {
@@ -36,12 +39,14 @@ void fanInit(void)
 
 void fanOn(void)
 {
+    isOn = true;
     OCR0 = FAN_LOW;
 }
 
 
 void fanOff(void)
 {
+    isOn = false;
     OCR0 = 0;
 }
 
@@ -56,6 +61,7 @@ void fanToggle(void)
     {
         fanOff();
     }
+    SetSpeed(previouseSpeed);
 }
 
 
@@ -74,4 +80,29 @@ void fanMid(void)
 void fanHigh(void)
 {
     OCR0 = FAN_HIGH;
+}
+
+void SetSpeed(uint8_t speed)
+{
+    if(!isOn)
+    {
+        previouseSpeed = speed;
+        return;
+    }
+
+    switch(speed)
+    {
+        case 0:
+            //fanOff();
+            fanLow();
+            break;
+        case 1:
+            fanMid();
+            break;
+        case 2:
+            fanHigh();
+            break;
+        //case 3:
+        //    break;
+    }
 }

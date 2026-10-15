@@ -12,6 +12,8 @@
 #include "servo.h"
 #include "fan.h"
 #include "button.h"
+#include "tft.h"
+#include "touch.h"
 
 
 void apInit(void);

@@ -1,19 +1,34 @@
 #include "touch.h"
 #include "tft.h"
+#include "debug.h"
+
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdint.h>
 
-// 터치 컨트롤러로 1바이트 전송
+
+volatile uint16_t x, y;
+volatile uint8_t zone;
+
+// ========================================
+// Touch Software SPI Write
+// ========================================
+
 static void TOUCH_WriteByte(uint8_t data)
 {
     for (uint8_t i = 0; i < 8; i++)
     {
+        // DIN
         if (data & 0x80)
+        {
             PORTA |= (1 << TOUCH_DIN);
+        }
         else
+        {
             PORTA &= ~(1 << TOUCH_DIN);
+        }
 
+        // Clock
         PORTA |= (1 << TOUCH_CLK);
         PORTA &= ~(1 << TOUCH_CLK);
 
@@ -21,7 +36,11 @@ static void TOUCH_WriteByte(uint8_t data)
     }
 }
 
-// 터치 컨트롤러에서 1바이트 수신
+
+// ========================================
+// Touch Software SPI Read
+// ========================================
+
 static uint8_t TOUCH_ReadByte(void)
 {
     uint8_t data = 0;
@@ -33,7 +52,9 @@ static uint8_t TOUCH_ReadByte(void)
         data <<= 1;
 
         if (PINA & (1 << TOUCH_DO))
+        {
             data |= 1;
+        }
 
         PORTA &= ~(1 << TOUCH_CLK);
     }
@@ -41,81 +62,137 @@ static uint8_t TOUCH_ReadByte(void)
     return data;
 }
 
-// 터치 ADC 데이터 읽기
+
+// ========================================
+// XPT2046 ADC Read
+// ========================================
+
 static uint16_t TOUCH_ReadADC(uint8_t command)
 {
-    uint16_t value = 0;
+    uint16_t value;
 
-    // TFT 선택 해제
+
+    // TFT 통신 해제
     CS_HIGH();
 
-    // 터치 컨트롤러 선택
+    // Touch 선택
     TOUCH_CS_LOW();
 
-    // ADC 명령 전송
+
+    // Command 전송
     TOUCH_WriteByte(command);
 
-    // 16비트 수신
+
+    // 16bit 데이터 읽기
     value = (uint16_t)TOUCH_ReadByte() << 8;
     value |= TOUCH_ReadByte();
 
-    // 터치 컨트롤러 선택 해제
+
+    // Touch 선택 해제
     TOUCH_CS_HIGH();
 
-    // 12비트 ADC 값 추출
-    return (value >> 3) & 0x0FFF;
+
+    // XPT2046 12bit ADC
+    value >>= 3;
+
+    return value & 0x0FFF;
 }
 
-// 터치 초기화
+
+// ========================================
+// Touch Init
+// ========================================
+
 void TOUCH_Init(void)
 {
+    // 출력
     DDRA |= (1 << TOUCH_CS)
           | (1 << TOUCH_CLK)
           | (1 << TOUCH_DIN);
 
-    DDRA &= ~((1 << TOUCH_DO) | (1 << TOUCH_IRQ));
 
+    // 입력
+    DDRA &= ~(
+        (1 << TOUCH_DO)
+        |
+        (1 << TOUCH_IRQ)
+    );
+
+
+    // 기본 상태
     TOUCH_CS_HIGH();
 
     PORTA &= ~(1 << TOUCH_CLK);
     PORTA &= ~(1 << TOUCH_DIN);
 
-    // PA7 내부 풀업 활성화
+
+    // IRQ Pull-up
     PORTA |= (1 << TOUCH_IRQ);
 }
 
-// 터치 여부 확인
-// 일반 입력 방식: IRQ가 LOW이면 눌린 것으로 판단
+
+// ========================================
+// Touch Press Check
+// ========================================
+
 uint8_t TOUCH_IsPressed(void)
 {
+    // IRQ LOW = pressed
     return !(PINA & (1 << TOUCH_IRQ));
 }
 
-// X축 ADC 값 읽기
+
+// ========================================
+// Read X
+// ========================================
+
 uint16_t TOUCH_ReadX(void)
 {
     return TOUCH_ReadADC(0xD0);
 }
 
-// Y축 ADC 값 읽기
+
+// ========================================
+// Read Y
+// ========================================
+
 uint16_t TOUCH_ReadY(void)
 {
     return TOUCH_ReadADC(0x90);
 }
 
-// 터치 좌표 읽기
-uint8_t TOUCH_GetXY(uint16_t *x, uint16_t *y)
-{
-    if (!TOUCH_IsPressed())
-        return 0;
 
+// ========================================
+// Read X/Y
+// ========================================
+
+uint8_t TOUCH_GetXY(
+    uint16_t *x,
+    uint16_t *y
+)
+{
+    DebugLog("Return 0\n");
+    if (!TOUCH_IsPressed())
+    {
+        return 0;
+    }
+    DebugLog("Return 1\n");
+
+
+    // 간단한 debounce
     _delay_ms(10);
 
+
     if (!TOUCH_IsPressed())
+    {
         return 0;
+    }
+    DebugLog("Return 2\n");
+
 
     *x = TOUCH_ReadX();
     *y = TOUCH_ReadY();
+
 
     return 1;
 }

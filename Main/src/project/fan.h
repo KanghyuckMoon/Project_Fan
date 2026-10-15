@@ -14,5 +14,6 @@ void fanLow(void);
 void fanMid(void);
 void fanHigh(void);
 
+void SetSpeed(uint8_t speed);
 
 #endif
