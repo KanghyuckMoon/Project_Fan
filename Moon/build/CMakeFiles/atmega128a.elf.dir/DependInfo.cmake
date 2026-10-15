@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main9.c" "CMakeFiles/atmega128a.elf.dir/src/main9.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/main9.c.obj.d"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c" "CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj.d"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c" "CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj.d"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tft.c" "CMakeFiles/atmega128a.elf.dir/src/project/tft.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/project/tft.c.obj.d"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c" "CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj" "gcc" "CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj.d"
   )
 

@@ -1,17 +1,55 @@
 #include "ap.h"
-#include "servo.h"
+// #include "servo.h"
+#include "tft.h"
+
+// int main(void)
+// {
+//     TFT_Init();
+
+//     while (1)
+//     {
+//         TFT_FillScreen(RED); // Red
+//         _delay_ms(1000);
+
+//         TFT_FillScreen(GREEN); // Green
+//         _delay_ms(1000);
+
+//         TFT_FillScreen(BLUE); // Blue
+//         _delay_ms(1000);
+//     }
+// }
 
 int main(void)
 {
-    ServoInit();
     uartInit();
-    SetRotateMode();
-    while(1)
+    TFT_Init();
+
+    DDRC |= (1 << PC5);                  // T_CS 출력
+    DDRC &= ~((1 << PC6) | (1 << PC7));  // IRQ, DO 입력
+
+    TOUCH_CS_HIGH();
+        DebugLog("START");
+
+    while (1)
     {
-        ServoMain();
-        TickMain();
+        DebugLog("START\n");
+        TouchTest();
+        TFT_FillScreen(RED); // Red
+        _delay_ms(100);
     }
-}   
+}
+
+// int main(void)
+// {
+//     ServoInit();
+//     uartInit();
+//     SetRotateMode();
+//     while(1)
+//     {
+//         ServoMain();
+//         TickMain();
+//     }
+// }   
 
 // int main(void)
 // {    

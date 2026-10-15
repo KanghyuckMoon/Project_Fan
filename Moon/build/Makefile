@@ -442,6 +442,30 @@ src/project/servo.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/servo.c.s
 .PHONY : src/project/servo.c.s
 
+src/project/tft.obj: src/project/tft.c.obj
+.PHONY : src/project/tft.obj
+
+# target to build an object file
+src/project/tft.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/tft.c.obj
+.PHONY : src/project/tft.c.obj
+
+src/project/tft.i: src/project/tft.c.i
+.PHONY : src/project/tft.i
+
+# target to preprocess a source file
+src/project/tft.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/tft.c.i
+.PHONY : src/project/tft.c.i
+
+src/project/tft.s: src/project/tft.c.s
+.PHONY : src/project/tft.s
+
+# target to generate assembly for a file
+src/project/tft.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/atmega128a.elf.dir/build.make CMakeFiles/atmega128a.elf.dir/src/project/tft.c.s
+.PHONY : src/project/tft.c.s
+
 src/project/tick.obj: src/project/tick.c.obj
 .PHONY : src/project/tick.obj
 
@@ -514,6 +538,9 @@ help:
 	@echo "... src/project/servo.obj"
 	@echo "... src/project/servo.i"
 	@echo "... src/project/servo.s"
+	@echo "... src/project/tft.obj"
+	@echo "... src/project/tft.i"
+	@echo "... src/project/tft.s"
 	@echo "... src/project/tick.obj"
 	@echo "... src/project/tick.i"
 	@echo "... src/project/tick.s"

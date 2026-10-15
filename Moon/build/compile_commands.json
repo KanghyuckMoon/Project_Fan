@@ -79,6 +79,12 @@
 },
 {
   "directory": "/home/user13/Documents/MoonLab/Project_Fan/Moon/build",
+  "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/Project_Fan/Moon -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/ap -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/bsp -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/hw -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/common -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/project/tft.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tft.c",
+  "file": "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tft.c",
+  "output": "CMakeFiles/atmega128a.elf.dir/src/project/tft.c.obj"
+},
+{
+  "directory": "/home/user13/Documents/MoonLab/Project_Fan/Moon/build",
   "command": "/opt/microchip/avr-gcc/bin/avr-gcc -DF_CPU=16000000UL -I/home/user13/Documents/MoonLab/Project_Fan/Moon -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/ap -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/bsp -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/driver -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/hw -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/common -I/home/user13/Documents/MoonLab/Project_Fan/Moon/src/common/hw/include -std=gnu11 -mmcu=atmega128 -ffunction-sections -fdata-sections -flto -fno-fat-lto-objects -Wall -Wextra -Os -g3 -o CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj -c /home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c",
   "file": "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c",
   "output": "CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj"

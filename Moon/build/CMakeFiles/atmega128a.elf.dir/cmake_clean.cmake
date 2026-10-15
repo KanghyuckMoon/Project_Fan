@@ -25,6 +25,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/atmega128a.elf.dir/src/project/debug.c.obj.d"
   "CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj"
   "CMakeFiles/atmega128a.elf.dir/src/project/servo.c.obj.d"
+  "CMakeFiles/atmega128a.elf.dir/src/project/tft.c.obj"
+  "CMakeFiles/atmega128a.elf.dir/src/project/tft.c.obj.d"
   "CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj"
   "CMakeFiles/atmega128a.elf.dir/src/project/tick.c.obj.d"
   "atmega128a.elf"

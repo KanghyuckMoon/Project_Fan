@@ -45,6 +45,7 @@ set(OLD_GLOB
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/main9.c"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/debug.c"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/servo.c"
+  "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tft.c"
   "/home/user13/Documents/MoonLab/Project_Fan/Moon/src/project/tick.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
