@@ -90,17 +90,37 @@ void SetLabel(Button* button, char* label)
 //Draw
 void DrawButton(Button* button)
 {
-    Bound bound = button->bound; 
-    uint16_t x = bound.x;
-    uint16_t y = bound.y;
+    Bound* bound = &button->bound;
 
-    // 버튼 테두리: 검은색
-    DrawRect(x - 2, y - 2, x + bound.width + 2, y + bound.height + 2, BLACK);
+    uint16_t x = bound->x;
+    uint16_t y = bound->y;
+    uint16_t w = bound->width;
+    uint16_t h = bound->height;
 
-    // 버튼 배경: 흰색
-    DrawRect(x + 2, y + 2, x + bound.width - 2, y + bound.height - 2, WHITE);
+    // 전체를 테두리 색으로
+    DrawRect(
+        x,
+        y,
+        x + w,
+        y + h,
+        BLACK
+    );
 
-    // 버튼 글자: 검은색
-    DrawString(x + bound.width * 0.5, y + bound.height * 0.5, button->label, 2, BLACK, WHITE);
+    // 안쪽
+    DrawRect(
+        x + 2,
+        y + 2,
+        x + w - 2,
+        y + h - 2,
+        button->color
+    );
+
+    DrawString(
+        x + w / 2,
+        y + h / 2,
+        button->label,
+        2,
+        button->text_color,
+        button->color
+    );
 }
-
