@@ -63,6 +63,18 @@ void TFT_SetWindow(
     uint16_t y1
 );
 
+// RGB565 부분 버퍼 두 개: 480픽셀 * 2바이트 * 2 = 1920바이트.
+#define TFT_BUFFER_PIXELS (SCREEN_WIDTH * 2U)
+
+typedef void (*TFT_Painter)(void *context);
+
+// 끝 좌표는 제외한다. painter는 각 띠마다 호출되므로 그리기만 수행해야 한다.
+// DrawRect/DrawChar/DrawString은 현재 띠에 자동으로 클리핑된다.
+// 동기식 API이며 ISR/다른 painter 안에서 호출하지 않는다.
+// 반환 시 모든 전송이 완료된다. CS/DC 직접 제어나 TFT_Data 사용은 금지한다.
+void TFT_RenderRegion(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1,
+                      uint16_t clear_color, TFT_Painter painter, void *context);
+
 
 void DrawRect(uint16_t x0, uint16_t y0,uint16_t x1, uint16_t y1, uint16_t color);
 void DrawChar(uint16_t x, uint16_t y, char c, uint8_t scale, uint16_t fg, uint16_t bg);

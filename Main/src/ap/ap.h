@@ -22,6 +22,9 @@
 int apInit(void);
 void apMain(void);
 
+int testInit(void);
+void testMain(void);
+
 void jmod_remote_control_main(void);
 
 #endif

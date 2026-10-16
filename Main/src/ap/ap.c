@@ -1,5 +1,46 @@
 #include "ap.h"
 
+// 각 프레임 전송이 끝난 뒤 색상을 500ms 동안 유지한다.
+#define TEST_COLOR_HOLD_MS 500
+
+static const uint16_t testColors[] = {RED, GREEN, BLUE, YELLOW, WHITE, BLACK};
+static uint8_t testColorIndex;
+
+static void PaintTestFrame(void *context)
+{
+    const uint16_t color = *(const uint16_t *)context;
+    DrawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, color);
+}
+
+static void DrawTestFrame(void)
+{
+    // 동기식 전송이므로 반환 전까지 color가 유효하다.
+    uint16_t color = testColors[testColorIndex];
+    TFT_RenderRegion(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT,
+                     color, PaintTestFrame, &color);
+}
+
+int testInit(void)
+{
+    uartInit();
+    TFT_Init();
+    testColorIndex = 0;
+    DrawTestFrame();
+    return 0;
+}
+
+void testMain(void)
+{
+    while (1)
+    {
+        _delay_ms(TEST_COLOR_HOLD_MS);
+        testColorIndex++;
+        if (testColorIndex >= sizeof(testColors) / sizeof(testColors[0]))
+            testColorIndex = 0;
+        DrawTestFrame();
+    }
+}
+
 
 // ============================================================
 // GUI Objects
@@ -292,28 +333,17 @@ void apMain(void)
 
     while (1)
     {
-        // ----------------------------------------------------
-        // Touch / GUI
-        // ----------------------------------------------------
+        //터치임
 
         if (TOUCH_GetXY(&x, &y))
         {
             DebugLog("Touch %d %d\n", x, y);
 
-            uint8_t result =
-                GUIMain(
-                    &mainCanvas,
-                    x,
-                    y
-                );
-
-            // GUI 변경이 발생했을 때만 다시 그림
-            if (result == RESULT_CHANGE)
-            {
-                DrawCanvas(&mainCanvas);
-            }
+            GUIMain(&mainCanvas, x, y);
         }
-        DrawUI();
+
+        //변경된것만 있을 때 갱신
+        DrawDirtyCanvas(&mainCanvas);
 
         // ----------------------------------------------------
         // System Update

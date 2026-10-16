@@ -14,13 +14,30 @@ void SetButtonEnable(Button* button, bool enable)
         return;
     }
 
-    button->enable = enable;
+    if (button->enable != enable)
+    {
+        button->enable = enable;
+        InvalidateButton(button);
+    }
 }
-void SetLabel(Button* button, char* label)
+void SetLabel(Button* button, const char* label)
 {
+    if (button == NULL)
+        return;
+
+    if (button->label == NULL || label == NULL ||
+        strcmp(button->label, label) != 0)
+    {
+        InvalidateButton(button);
+    }
     button->label = label;
 }
 
+void InvalidateButton(Button* button)
+{
+    if (button != NULL)
+        button->dirty = true;
+}
 // // 사각형 그리기: x1, y1은 포함하지 않는 끝 좌표
 // void DrawRect(uint16_t x0, uint16_t y0,
 //               uint16_t x1, uint16_t y1,
@@ -97,14 +114,18 @@ void DrawButton(Button* button)
     uint16_t w = bound->width;
     uint16_t h = bound->height;
 
-    // 전체를 테두리 색으로
-    DrawRect(
-        x,
-        y,
-        x + w,
-        y + h,
-        BLACK
-    );
+    // 작은 버튼은 안쪽 좌표가 역전되지 않도록 처리한다.
+    if (w < 4 || h < 4)
+    {
+        DrawRect(x, y, x + w, y + h, BLACK);
+        return;
+    }
+
+    // 테두리 그리기
+    DrawRect(x, y, x + w, y + 2, BLACK);
+    DrawRect(x, y + h - 2, x + w, y + h, BLACK);
+    DrawRect(x, y + 2, x + 2, y + h - 2, BLACK);
+    DrawRect(x + w - 2, y + 2, x + w, y + h - 2, BLACK);
 
     // 안쪽
     DrawRect(
