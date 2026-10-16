@@ -96,7 +96,8 @@ void BTN_Servo(void)
 
 void BTN_Auto(void)
 {
-    // 추후 추가
+    // 표시 상태만 전환한다. 실제 자동 제어는 연결하지 않는다.
+    SetButtonActive(&buttonAuto, !buttonAuto.active);
 }
 
 
@@ -107,10 +108,9 @@ void BTN_Auto(void)
 void LU_OnOff(Button* btn)
 {
     DebugLog("ONOFF Update");
-    SetLabel(
-        btn,
-        motor_on ? "ON" : "OFF"
-    );
+    SetLabel(btn, motor_on ? "ON" : "OFF");
+    SetButtonActive(btn, motor_on != 0);
+    btn->hint = motor_on ? "TAP TO STOP" : "TAP TO START";
 }
 
 
@@ -133,23 +133,24 @@ void LU_Speed(Button* btn)
     }
 
     SetLabel(btn, label);
+    SetButtonActive(btn, true);
+    SetButtonLevel(btn, motor_level + 1);
 }
 
 
 void LU_Servo(Button* btn)
 {
     DebugLog("Servo Update");
-    SetLabel(
-        btn,
-        rotation_on ? "ROT ON" : "ROT OFF"
-    );
+    SetLabel(btn, rotation_on ? "ON" : "OFF");
+    SetButtonActive(btn, rotation_on != 0);
+    btn->hint = rotation_on ? "SWEEP ACTIVE" : "TAP TO SWING";
 }
 
 
 void LU_Auto(Button* btn)
 {
     DebugLog("Auto Update");
-    SetLabel(btn, "AUTO");
+    SetLabel(btn, btn->active ? "ON" : "OFF");
 }
 
 
@@ -191,17 +192,21 @@ int apInit(void)
     {
         .bound =
         {
-            .x = 0,
-            .y = 0,
-            .width = 120,
-            .height = 160
+            .x = 12,
+            .y = 76,
+            .width = 104,
+            .height = 104
         },
 
         .enable = true,
 
-        .color = 0xFFFF,
+        .color = GUI_SURFACE,
         .label = "Button",
-        .text_color = 0x0000,
+        .text_color = GUI_TEXT,
+        .title = "POWER",
+        .hint = "TAP TO START",
+        .icon = ICON_POWER,
+        .accent = GUI_TEAL,
 
         .OnClick = BTN_OnOff,
         .OnLabelUpdate = LU_OnOff
@@ -216,17 +221,21 @@ int apInit(void)
     {
         .bound =
         {
-            .x = 120,
-            .y = 0,
-            .width = 120,
-            .height = 160
+            .x = 124,
+            .y = 76,
+            .width = 104,
+            .height = 104
         },
 
         .enable = true,
 
-        .color = 0xFFFF,
+        .color = GUI_SURFACE,
         .label = "Button",
-        .text_color = 0x0000,
+        .text_color = GUI_TEXT,
+        .title = "SWING",
+        .hint = "TAP TO SWING",
+        .icon = ICON_SWING,
+        .accent = GUI_BLUE,
 
         .OnClick = BTN_Servo,
         .OnLabelUpdate = LU_Servo
@@ -241,17 +250,21 @@ int apInit(void)
     {
         .bound =
         {
-            .x = 0,
-            .y = 160,
-            .width = 120,
-            .height = 160
+            .x = 12,
+            .y = 188,
+            .width = 104,
+            .height = 104
         },
 
         .enable = true,
 
-        .color = 0xFFFF,
+        .color = GUI_SURFACE,
         .label = "Button",
-        .text_color = 0x0000,
+        .text_color = GUI_TEXT,
+        .title = "AIRFLOW",
+        .hint = "",
+        .icon = ICON_SPEED,
+        .accent = GUI_AMBER,
 
         .OnClick = BTN_Speed,
         .OnLabelUpdate = LU_Speed
@@ -266,17 +279,21 @@ int apInit(void)
     {
         .bound =
         {
-            .x = 120,
-            .y = 160,
-            .width = 120,
-            .height = 160
+            .x = 124,
+            .y = 188,
+            .width = 104,
+            .height = 104
         },
 
         .enable = true,
 
-        .color = 0xFFFF,
+        .color = GUI_SURFACE,
         .label = "Button",
-        .text_color = 0x0000,
+        .text_color = GUI_TEXT,
+        .title = "AUTO MODE",
+        .hint = "",
+        .icon = ICON_AUTO,
+        .accent = GUI_PURPLE,
 
         .OnClick = BTN_Auto,
         .OnLabelUpdate = LU_Auto
@@ -330,16 +347,21 @@ void apMain(void)
 {
     uint16_t x = 0;
     uint16_t y = 0;
+    bool touchHandled = false;
 
     while (1)
     {
         //터치임
 
-        if (TOUCH_GetXY(&x, &y))
+        if (!TOUCH_IsPressed())
+            touchHandled = false;
+
+        if (TOUCH_GetXY(&x, &y) && !touchHandled)
         {
             DebugLog("Touch %d %d\n", x, y);
 
             GUIMain(&mainCanvas, x, y);
+            touchHandled = true;
         }
 
         //변경된것만 있을 때 갱신

@@ -77,6 +77,8 @@ void TFT_RenderRegion(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1,
 
 
 void DrawRect(uint16_t x0, uint16_t y0,uint16_t x1, uint16_t y1, uint16_t color);
+// 8픽셀 모서리의 채워진 사각형. 끝 좌표는 제외한다.
+void DrawRoundRect(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t color);
 void DrawChar(uint16_t x, uint16_t y, char c, uint8_t scale, uint16_t fg, uint16_t bg);
 void DrawString(uint16_t center_x, uint16_t y, const char *str, uint8_t scale, uint16_t fg, uint16_t bg);
 

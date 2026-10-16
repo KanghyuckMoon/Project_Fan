@@ -1,10 +1,6 @@
 #include "GUIButton.h"
-
 #include "FontAndColor.h"
-#include "GUIButton.h"
-#include "GUIBounds.h"
 #include "tft.h"
-#include "touch.h"
 
 
 void SetButtonEnable(Button* button, bool enable)
@@ -38,110 +34,94 @@ void InvalidateButton(Button* button)
     if (button != NULL)
         button->dirty = true;
 }
-// // 사각형 그리기: x1, y1은 포함하지 않는 끝 좌표
-// void DrawRect(uint16_t x0, uint16_t y0,
-//               uint16_t x1, uint16_t y1,
-//               uint16_t color)
-// {
-//     TFT_SetWindow(x0, y0, x1 - 1, y1 - 1);
 
-//     for (uint32_t i = 0;
-//          i < (uint32_t)(x1 - x0) * (y1 - y0);
-//          i++)
-//     {
-//         TFT_Data(color >> 8);
-//         TFT_Data(color & 0xFF);
-//     }
-// }
+void SetButtonActive(Button* button, bool active)
+{
+    if (button != NULL && button->active != active)
+    {
+        button->active = active;
+        InvalidateButton(button);
+    }
+}
 
-// // 글자 하나 그리기
-// void DrawChar(uint16_t x, uint16_t y, char c,
-//               uint8_t scale, uint16_t fg, uint16_t bg)
-// {
-//     uint8_t index = FontIndex(c);
+void SetButtonLevel(Button* button, uint8_t level)
+{
+    if (level > 3) level = 3;
+    if (button != NULL && button->level != level)
+    {
+        button->level = level;
+        InvalidateButton(button);
+    }
+}
 
-//     TFT_SetWindow(x, y,
-//                   x + 5 * scale - 1,
-//                   y + 7 * scale - 1);
+#include <avr/pgmspace.h>
 
-//     for (uint8_t row = 0; row < 7; row++)
-//     {
-//         for (uint8_t sy = 0; sy < scale; sy++)
-//         {
-//             for (uint8_t col = 0; col < 5; col++)
-//             {
-//                 uint16_t color =
-//                     (font[index][row] & (1 << (4 - col))) ? fg : bg;
+// 16x16 단색 기능 아이콘. RGB 이미지 버퍼 없이 플래시에서 읽는다.
+static const uint16_t icons[4][16] PROGMEM = {
+    {0x0180, 0x0180, 0x0990, 0x1998, 0x318C, 0x318C, 0x6186, 0x6186, 0x6006, 0x6006, 0x300C, 0x300C, 0x1C38, 0x0FF0, 0x03C0, 0x0000},
+    {0x0000, 0x03C0, 0x0FF2, 0x0C3A, 0x000E, 0x000E, 0x003E, 0x0000, 0x0000, 0x7C00, 0x7000, 0x7000, 0x5C30, 0x4FF0, 0x03C0, 0x0000},
+    {0x0000, 0x001C, 0x001C, 0x001C, 0x001C, 0x001C, 0x039C, 0x039C, 0x039C, 0x039C, 0x739C, 0x739C, 0x739C, 0x739C, 0x739C, 0x0000},
+    {0x0000, 0x0180, 0x0180, 0x0180, 0x0180, 0x03C0, 0x07E0, 0x7FFE, 0x7FFE, 0x07E0, 0x03C0, 0x0180, 0x0180, 0x0180, 0x0180, 0x0000},
+};
 
-//                 for (uint8_t sx = 0; sx < scale; sx++)
-//                 {
-//                     TFT_Data(color >> 8);
-//                     TFT_Data(color & 0xFF);
-//                 }
-//             }
-//         }
-//     }
-// }
+static void DrawIcon(uint16_t x, uint16_t y, ButtonIcon icon, uint16_t color)
+{
+    if (icon < ICON_POWER || icon > ICON_AUTO) return;
+    for (uint8_t row = 0; row < 16; row++)
+    {
+        uint16_t bits = pgm_read_word(&icons[icon - ICON_POWER][row]);
+        for (uint8_t col = 0; col < 16; col++)
+            if (bits & ((uint16_t)1 << (15 - col)))
+                DrawRect(x + col, y + row, x + col + 1, y + row + 1, color);
+    }
+}
 
-// // 문자열을 가로 가운데에 배치
-// void DrawString(uint16_t center_x, uint16_t y,
-//                 const char *str, uint8_t scale,
-//                 uint16_t fg, uint16_t bg)
-// {
-//     uint16_t len = 0;
-//     while (str[len] != '\0')
-//         len++;
-
-//     uint16_t width = len * 6 * scale - scale;
-//     uint16_t x = center_x - width / 2;
-
-//     while (*str)
-//     {
-//         DrawChar(x, y, *str, scale, fg, bg);
-//         x += 6 * scale;
-//         str++;
-//     }
-// }
-
-
-//Draw
 void DrawButton(Button* button)
 {
-    Bound* bound = &button->bound;
+    if (button == NULL) return;
+    const Bound *bound = &button->bound;
+    uint16_t x = bound->x, y = bound->y;
+    uint16_t w = bound->width, h = bound->height;
+    if (w == 0 || h == 0 || x >= SCREEN_WIDTH || y >= SCREEN_HEIGHT) return;
+    uint16_t right = (uint32_t)x + w > SCREEN_WIDTH ? SCREEN_WIDTH : x + w;
+    uint16_t bottom = (uint32_t)y + h > SCREEN_HEIGHT ? SCREEN_HEIGHT : y + h;
+    w = right - x;
+    h = bottom - y;
+    uint16_t accent = button->accent ? button->accent : GUI_TEAL;
+    uint16_t surface = button->active ? GUI_SURFACE_ACTIVE : button->color;
+    uint16_t border = button->active ? accent : GUI_BORDER;
 
-    uint16_t x = bound->x;
-    uint16_t y = bound->y;
-    uint16_t w = bound->width;
-    uint16_t h = bound->height;
-
-    // 작은 버튼은 안쪽 좌표가 역전되지 않도록 처리한다.
-    if (w < 4 || h < 4)
+    // 모서리와 그림자를 포함한 영역을 먼저 지워 이전 상태를 남기지 않는다.
+    DrawRect(x, y, right, bottom, GUI_BG);
+    if (w < 80 || h < 92)
     {
-        DrawRect(x, y, x + w, y + h, BLACK);
+        DrawRoundRect(x, y, right, bottom, surface);
+        if (w >= 16 && h >= 14)
+            DrawString(x + w / 2, y + (h - 7) / 2, button->label, 1,
+                       button->text_color, surface);
         return;
     }
 
-    // 테두리 그리기
-    DrawRect(x, y, x + w, y + 2, BLACK);
-    DrawRect(x, y + h - 2, x + w, y + h, BLACK);
-    DrawRect(x, y + 2, x + 2, y + h - 2, BLACK);
-    DrawRect(x + w - 2, y + 2, x + w, y + h - 2, BLACK);
+    DrawRoundRect(x, y + 3, right, bottom, GUI_SHADOW);
+    DrawRoundRect(x, y, right, bottom - 3, border);
+    DrawRoundRect(x + 1, y + 1, right - 1, bottom - 4, surface);
+    DrawIcon(x + 14, y + 15, button->icon, button->active ? accent : GUI_MUTED);
+    DrawRect(right - 21, y + 20, right - 15, y + 23,
+             button->active ? accent : GUI_BORDER);
 
-    // 안쪽
-    DrawRect(
-        x + 2,
-        y + 2,
-        x + w - 2,
-        y + h - 2,
-        button->color
-    );
+    DrawString(x + w / 2, y + 43, button->title, 1, GUI_MUTED, surface);
+    uint16_t length = button->label ? strlen(button->label) : 0;
+    uint8_t scale = (uint32_t)length * 12 > w - 12U ? 1 : 2;
+    DrawString(x + w / 2, y + 58, button->label, scale,
+               button->active ? accent : button->text_color, surface);
 
-    DrawString(
-        x + w / 2,
-        y + h / 2,
-        button->label,
-        2,
-        button->text_color,
-        button->color
-    );
+    if (button->icon == ICON_SPEED)
+    {
+        uint16_t start = x + (w - 68) / 2;
+        for (uint8_t i = 0; i < 3; i++)
+            DrawRect(start + i * 24, bottom - 20, start + i * 24 + 20, bottom - 16,
+                     i < button->level ? accent : GUI_BORDER);
+    }
+    else
+        DrawString(x + w / 2, bottom - 20, button->hint, 1, GUI_MUTED, surface);
 }

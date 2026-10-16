@@ -2,7 +2,7 @@
 
 // 1: 더블 버퍼 색상 테스트, 0: 기존 선풍기 애플리케이션
 #ifndef AP_RENDER_TEST
-#define AP_RENDER_TEST 1
+#define AP_RENDER_TEST 0
 #endif
 
 int main(void)

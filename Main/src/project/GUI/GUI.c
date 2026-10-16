@@ -5,18 +5,29 @@
 static void PaintButton(void *context)
 {
     DrawButton((Button *)context);
+}
+
+static void PaintCanvas(void *context)
+{
+    Canvas *canvas = context;
     DrawUI();
+    for (uint8_t i = 0; i < MAX_BUTTONS; i++)
+    {
+        Button *button = canvas->buttonIntance[i];
+        if (button != NULL && button->enable)
+            DrawButton(button);
+    }
 }
 
 static void RenderButton(Button *button)
 {
-    // 상태 변경 없이 배경, 글자, 구분선이 완성된 띠만 전송한다.
+    // 상태 변경 없이 배경, 아이콘, 글자가 완성된 카드만 전송한다.
     uint32_t right = (uint32_t)button->bound.x + button->bound.width;
     uint32_t bottom = (uint32_t)button->bound.y + button->bound.height;
     TFT_RenderRegion(button->bound.x, button->bound.y,
                      right > SCREEN_WIDTH ? SCREEN_WIDTH : right,
                      bottom > SCREEN_HEIGHT ? SCREEN_HEIGHT : bottom,
-                     BLACK, PaintButton, button);
+                     GUI_BG, PaintButton, button);
     button->dirty = false;
 }
 
@@ -93,6 +104,7 @@ bool AddButton(Canvas* canvas, Button* button)
 
 void DrawCanvas(Canvas* canvas)
 {
+    TFT_RenderRegion(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, GUI_BG, PaintCanvas, canvas);
     for (uint8_t i = 0; i < MAX_BUTTONS; i++)
     {
         Button* button = (Button*)(canvas->buttonIntance[i]);
@@ -106,7 +118,7 @@ void DrawCanvas(Canvas* canvas)
         {
             continue;
         }
-        RenderButton(button);
+        button->dirty = false;
     }
 }
 

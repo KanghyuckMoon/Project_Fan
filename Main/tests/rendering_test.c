@@ -1,6 +1,8 @@
 #include <assert.h>
 #include "tft.h"
 #include "GUI.h"
+#include "ap.h"
+#include <setjmp.h>
 
 uint8_t PORTA, PORTB, DDRA, DDRB;
 static uint16_t screen[SCREEN_HEIGHT][SCREEN_WIDTH];
@@ -39,7 +41,7 @@ void SPI_Write(uint8_t value)
         }
         return;
     }
-    assert(command == 0x2C);
+    if (command != 0x2C) return; // Initialization registers do not write pixels.
     if (!half) { high = value; half = 1; return; }
     assert(px <= x1 && py <= y1);
     screen[py][px] = ((uint16_t)high << 8) | value;
@@ -77,8 +79,8 @@ static void TestCanvas(void)
     }
     // The direct renderer is the visual oracle for the buffered renderer.
     Reset();
-    for (unsigned i = 0; i < 4; i++) DrawButton(&buttons[i]);
     DrawUI();
+    for (unsigned i = 0; i < 4; i++) DrawButton(&buttons[i]);
     memcpy(expected, screen, sizeof(screen));
     Reset();
     DrawCanvas(&canvas);
@@ -112,6 +114,7 @@ static uint8_t scale;
 static void PaintPattern(void *context)
 {
     assert(context == &scale);
+    DrawUI();
     DrawRect(1, 1, 238, 319, GREEN);
     DrawRect(3, 4, 38, 41, RED);
     DrawChar(5, 6, 'A', scale, BLUE, WHITE);
@@ -119,7 +122,6 @@ static void PaintPattern(void *context)
     DrawString(120, 40, "LEVEL 3", scale, BLACK, GREEN);
     DrawString(120, 50, "", 2, BLACK, WHITE);
     DrawString(120, 50, NULL, 2, BLACK, WHITE);
-    DrawUI();
 }
 
 static void BufferedPattern(void *context)
@@ -150,6 +152,66 @@ static void TestRegion(uint16_t left, uint16_t top, uint16_t right, uint16_t bot
     assert(!half && (PORTB & (1 << TFT_CS)));
 }
 
+// Run the real application initialization and touch loop with hardware stubs.
+volatile uint32_t tick;
+static jmp_buf application_done;
+static unsigned touch_step, power_calls, speed_calls, rotate_calls;
+void uartInit(void) {}
+void fanInit(void) {}
+void ServoInit(void) {}
+void TOUCH_Init(void) {}
+void DebugLog(const char *format, ...) { (void)format; }
+void fanToggle(void) { power_calls++; }
+void SetSpeed(uint8_t speed) { assert(speed == 2); speed_calls++; }
+void SetRotateMode(void) { rotate_calls++; }
+void SetNoneMode(void) { assert(0); }
+void ServoMain(void) {}
+uint8_t TOUCH_IsPressed(void) { return touch_step % 4 != 3; }
+uint8_t TOUCH_GetXY(uint16_t *x, uint16_t *y)
+{
+    *x = touch_step >= 4 && touch_step < 8 ? 150 : 30;
+    *y = touch_step >= 8 ? 220 : 100;
+    return TOUCH_IsPressed();
+}
+void TickMain(void)
+{
+    if (++touch_step == 12) longjmp(application_done, 1);
+}
+
+static void ExportPreview(const char *name)
+{
+    const char *directory = getenv("RENDER_PREVIEW_DIR");
+    if (directory == NULL) return;
+    char path[1024];
+    assert(snprintf(path, sizeof(path), "%s/%s.ppm", directory, name) < (int)sizeof(path));
+    FILE *file = fopen(path, "wb");
+    assert(file);
+    fprintf(file, "P6\n240 320\n255\n");
+    for (unsigned y = 0; y < SCREEN_HEIGHT; y++)
+        for (unsigned x = 0; x < SCREEN_WIDTH; x++)
+        {
+            uint16_t color = screen[y][x];
+            fputc(((color >> 11) & 31) * 255 / 31, file);
+            fputc(((color >> 5) & 63) * 255 / 63, file);
+            fputc((color & 31) * 255 / 31, file);
+        }
+    fclose(file);
+}
+
+static void TestApplication(void)
+{
+    Reset();
+    assert(apInit() == 0);
+    assert(pixels == 76800);
+    ExportPreview("smart-fan-idle");
+    if (setjmp(application_done) == 0) apMain();
+    assert(power_calls == 1 && speed_calls == 1 && rotate_calls == 1);
+    assert(motor_on == 1 && rotation_on == 1 && motor_level == 2);
+    assert(pixels == 76800 + 3 * 104 * 104);
+    ExportPreview("smart-fan-active");
+    puts("PASS: actual application layout, active states, speed level, one action per press");
+}
+
 int main(void)
 {
     TestCanvas();
@@ -167,5 +229,6 @@ int main(void)
     TFT_RenderRegion(0, 0, 1, 1, BLACK, NULL, &scale);
     assert(bytes == before);
     puts("PASS: alternating stripes, clipping, scaling, final stripe, invalid regions");
+    TestApplication();
     return 0;
 }

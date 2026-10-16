@@ -262,6 +262,23 @@ void DrawRect(uint16_t x0, uint16_t y0,
     CS_HIGH();
 }
 
+void DrawRoundRect(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t color)
+{
+    if (x1 <= x0 || y1 <= y0) return;
+    if (x1 - x0 < 16 || y1 - y0 < 16)
+    {
+        DrawRect(x0, y0, x1, y1, color);
+        return;
+    }
+    for (uint8_t row = 0; row < 8; row++)
+    {
+        uint8_t inset = row == 0 ? 5 : row == 1 ? 3 : row == 2 ? 2 : row < 5 ? 1 : 0;
+        DrawRect(x0 + inset, y0 + row, x1 - inset, y0 + row + 1, color);
+        DrawRect(x0 + inset, y1 - row - 1, x1 - inset, y1 - row, color);
+    }
+    DrawRect(x0, y0 + 8, x1, y1 - 8, color);
+}
+
 // 글자 하나 그리기
 void DrawChar(uint16_t x, uint16_t y, char c,
               uint8_t scale, uint16_t fg, uint16_t bg)
@@ -285,7 +302,7 @@ void DrawChar(uint16_t x, uint16_t y, char c,
         uint16_t *line = render_target + (top - render_y0) * stride + left - render_x0;
         for (uint16_t py = top; py < end_y; py++)
         {
-            uint8_t bits = font[index][(py - y) / scale];
+            uint8_t bits = FontRow(index, (py - y) / scale);
             for (uint16_t px = left; px < end_x; px++)
                 line[px - left] = (bits & (1 << (4 - (px - x) / scale))) ? fg : bg;
             if (py + 1 < end_y)
@@ -309,7 +326,7 @@ void DrawChar(uint16_t x, uint16_t y, char c,
             for (uint8_t col = 0; col < 5; col++)
             {
                 uint16_t color =
-                    (font[index][row] & (1 << (4 - col))) ? fg : bg;
+                    (FontRow(index, row) & (1 << (4 - col))) ? fg : bg;
 
                 for (uint8_t sx = 0; sx < scale; sx++)
                 {
@@ -345,46 +362,16 @@ void DrawString(uint16_t center_x, uint16_t y,
     }
 }
 
-// 버튼 하나 그리기
-// void DrawButton(uint8_t zone, uint16_t color,
-//                 const char *label, uint16_t text_color)
-// {
-//     uint16_t x = (zone % 2) * 120;
-//     uint16_t y = (zone / 2) * 160;
-
-//     // 버튼 배경: 흰색
-//     DrawRect(x, y, x + 120, y + 160, WHITE);
-
-//     // 버튼 테두리: 검은색
-//     DrawRect(x, y, x + 120, y + 2, BLACK);
-//     DrawRect(x, y + 158, x + 120, y + 160, BLACK);
-//     DrawRect(x, y, x + 2, y + 160, BLACK);
-//     DrawRect(x + 118, y, x + 120, y + 160, BLACK);
-
-//     // 버튼 글자: 검은색
-//     DrawString(x + 60, y + 76, label, 2, BLACK, WHITE);
-// }
-
-
-// 현재 상태에 맞춰 버튼 4개 표시
+// 정적인 화면 크롬. 전체 Canvas 합성에서만 호출한다.
 void DrawUI(void)
 {
-    // DrawButton(0, motor_on ? GREEN : RED,
-    //            motor_on ? "ON" : "OFF", WHITE);
-
-    // if (motor_level == 1)
-    //     DrawButton(1, BLUE, "LEVEL 1", WHITE);
-    // else if (motor_level == 2)
-    //     DrawButton(1, BLUE, "LEVEL 2", WHITE);
-    // else
-    //     DrawButton(1, BLUE, "LEVEL 3", WHITE);
-
-    // DrawButton(2, rotation_on ? GREEN : RED,
-    //            rotation_on ? "ROT ON" : "ROT OFF", WHITE);
-
-    // DrawButton(3, 0xFFE0, "AUTO", BLACK);
-
-    // 화면 중앙 구분선
-    DrawRect(119, 0, 121, SCREEN_HEIGHT, WHITE);
-    DrawRect(0, 159, SCREEN_WIDTH, 161, WHITE);
+    DrawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, GUI_BG);
+    DrawRect(12, 12, 15, 19, GUI_TEAL);
+    DrawString(78, 12, "AIR / CONTROL", 1, GUI_MUTED, GUI_BG);
+    DrawString(65, 31, "SMART FAN", 2, GUI_TEXT, GUI_BG);
+    DrawRoundRect(181, 29, 228, 46, GUI_SURFACE);
+    DrawString(204, 34, "LOCAL", 1, GUI_TEAL, GUI_SURFACE);
+    DrawRect(12, 60, 228, 61, GUI_BORDER);
+    DrawRect(12, 60, 48, 61, GUI_TEAL);
+    DrawString(120, 306, "TOUCH TO CONTROL", 1, GUI_MUTED, GUI_BG);
 }

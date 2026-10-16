@@ -8,12 +8,16 @@ import os
 from pathlib import Path
 import subprocess
 import tempfile
+import argparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--preview-dir", type=Path, help="Export actual application screens as PPM")
+    arguments = parser.parse_args()
     with tempfile.TemporaryDirectory(prefix="fan-rendering-") as directory:
         work = Path(directory)
         (work / "avr").mkdir()
@@ -25,6 +29,10 @@ def main():
             "#define PA0 0\n#define PA1 1\n"
         )
         (work / "avr/interrupt.h").write_text("")
+        (work / "avr/pgmspace.h").write_text(
+            "#define PROGMEM\n#define pgm_read_byte(p) (*(const uint8_t *)(p))\n"
+            "#define pgm_read_word(p) (*(const uint16_t *)(p))\n"
+        )
         (work / "util/delay.h").write_text("#define _delay_ms(ms) ((void)(ms))\n")
         source = (ROOT / "src/project/tft.c").read_text()
         start = source.index("void SPI_Write(")
@@ -33,17 +41,21 @@ def main():
         command = ["gcc", "-std=c11", "-g", "-Wall", "-Wextra",
                    "-Wno-unused-function", "-fsanitize=address,undefined",
                    "-fno-omit-frame-pointer", "-I" + str(work)]
-        for path in ("src/common", "src/project", "src/project/GUI", "src/driver"):
+        for path in ("src/common", "src/project", "src/project/GUI", "src/driver", "src/ap"):
             command.append("-I" + str(ROOT / path))
         command += [str(work / "tft.c")]
         for path in ("src/project/GUI/GUI.c", "src/project/GUI/GUIButton.c",
-                     "src/project/GUI/GUIBounds.c", "tests/rendering_test.c"):
+                     "src/project/GUI/GUIBounds.c", "src/project/GUI/FontAndColor.c",
+                     "src/ap/ap.c", "tests/rendering_test.c"):
             command.append(str(ROOT / path))
         command += ["-o", str(work / "rendering_test")]
         subprocess.run(command, check=True)
         environment = os.environ.copy()
         # LeakSanitizer cannot run under the desktop executor's ptrace wrapper.
         environment["ASAN_OPTIONS"] = "detect_leaks=0"
+        if arguments.preview_dir:
+            arguments.preview_dir.mkdir(parents=True, exist_ok=True)
+            environment["RENDER_PREVIEW_DIR"] = str(arguments.preview_dir.resolve())
         subprocess.run([str(work / "rendering_test")], check=True, env=environment)
 
 

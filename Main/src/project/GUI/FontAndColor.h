@@ -13,46 +13,22 @@
 #define BLACK   0x0000
 #define YELLOW  0xFFE0
 
-// 글꼴: A, E, F, L, N, O, R, T, U, V, 1, 2, 3, /, 공백
-static const uint8_t font[15][7] = {
-    {14,17,17,31,17,17,17}, // A
-    {31,16,16,30,16,16,31}, // E
-    {31,16,16,30,16,16,16}, // F
-    {16,16,16,16,16,16,31}, // L
-    {17,25,25,21,19,19,17}, // N
-    {14,17,17,17,17,17,14}, // O
-    {30,17,17,30,20,18,17}, // R
-    {31,4,4,4,4,4,4},       // T
-    {17,17,17,17,17,17,14}, // U
-    {17,17,17,17,17,10,4},  // V
-    {4,12,4,4,4,4,14},      // 1
-    {14,17,1,2,4,8,31},     // 2
-    {30,1,1,14,1,1,30},     // 3
-    {1,2,2,4,8,8,16},       // /
-    {0,0,0,0,0,0,0}         // 공백
-};
+// 공통 테마: RGB888 색상을 TFT RGB565로 변환한다.
+#define RGB565(r, g, b) ((((uint16_t)(r) & 0xF8) << 8) | \
+                         (((uint16_t)(g) & 0xFC) << 3) | ((uint16_t)(b) >> 3))
+#define GUI_BG             RGB565(10, 17, 28)
+#define GUI_SURFACE        RGB565(20, 31, 46)
+#define GUI_SURFACE_ACTIVE RGB565(17, 43, 47)
+#define GUI_BORDER         RGB565(41, 57, 76)
+#define GUI_TEXT           RGB565(235, 242, 248)
+#define GUI_MUTED          RGB565(126, 147, 167)
+#define GUI_TEAL           RGB565(69, 221, 188)
+#define GUI_BLUE           RGB565(106, 168, 255)
+#define GUI_AMBER          RGB565(249, 193, 95)
+#define GUI_PURPLE         RGB565(177, 154, 255)
+#define GUI_SHADOW         RGB565(4, 9, 16)
 
-static uint8_t FontIndex(char c)
-{
-    switch (c)
-    {
-        case 'A': return 0;
-        case 'E': return 1;
-        case 'F': return 2;
-        case 'L': return 3;
-        case 'N': return 4;
-        case 'O': return 5;
-        case 'R': return 6;
-        case 'T': return 7;
-        case 'U': return 8;
-        case 'V': return 9;
-        case '1': return 10;
-        case '2': return 11;
-        case '3': return 12;
-        case '/': return 13;
-        case ' ': return 14;
-        default:  return 14;
-    }
-}
+uint8_t FontIndex(char c);
+uint8_t FontRow(uint8_t index, uint8_t row);
 
 #endif
