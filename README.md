@@ -303,3 +303,15 @@ python3 tests/run_rendering_tests.py --preview-dir build/preview
 | 실측 자료 | 현재 문서는 코드·빌드·호스트 검증 중심 | 회로도·부품 목록·실물 사진·시연 영상·풍속별 측정 결과 보강 |
 
 현재 저장소에서 확인되는 구현과 향후 확장 항목을 구분하여, 발표 이후에도 기능·설계·검증 근거를 같은 경로로 검토할 수 있도록 구성했습니다.
+
+
+## DebugLog 디버깅
+
+[`DebugLog()`](Main/src/project/debug.c)는 `printf` 형식의 가변 인자를 받아 UART0(9600 bps)으로 로그를 출력하는 함수입니다. `uartInit()` 이후 사용할 수 있으며, 터치 좌표·버튼 상태 갱신·서보 PWM 비교값을 터미널에서 확인해 입력과 제어 흐름을 점검합니다.
+
+```c
+DebugLog("Touch %d %d\r\n", x, y);
+DebugLog("Servo OCR: %d\r\n", servoOCR);
+```
+
+내부에서 128바이트 버퍼와 `vsnprintf()`를 사용하므로 한 번에 최대 127바이트의 문자열을 전송하며, 줄바꿈은 호출 시 직접 넣습니다. UART 송신은 대기 방식이므로 로그가 많으면 메인 루프와 서보 갱신 간격에 영향을 줄 수 있습니다.
