@@ -76,6 +76,7 @@ target_include_directories(${EXECUTABLE} PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/src/bsp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/driver"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/project"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/project/GUI"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/hw"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/common"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/common/hw/include"

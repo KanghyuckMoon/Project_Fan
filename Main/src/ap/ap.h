@@ -11,12 +11,15 @@
 #include "tick.h"
 #include "servo.h"
 #include "fan.h"
-#include "button.h"
 #include "tft.h"
 #include "touch.h"
 
 
-void apInit(void);
+#include "GUI.h"
+#include "GUIBounds.h"
+#include "GUIButton.h"
+
+int apInit(void);
 void apMain(void);
 
 void jmod_remote_control_main(void);

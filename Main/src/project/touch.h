@@ -9,12 +9,25 @@
 // Touch PORTA
 // ========================
 
+#define TOUCH_PORT PORTA
+#define TOUCH_PORT_DDR DDRA
+#define TOUCH_PIN PINA
+
 #define TOUCH_CS   PA3
 #define TOUCH_CLK  PA4
 #define TOUCH_DIN  PA5
 
 #define TOUCH_DO   PA6
 #define TOUCH_IRQ  PA7
+
+#define TOUCH_X_MIN  300
+#define TOUCH_X_MAX  3800
+
+#define TOUCH_Y_MIN  300
+#define TOUCH_Y_MAX  3800
+
+#define TFT_WIDTH     240
+#define TFT_HEIGHT    320
 
 
 #define TOUCH_CS_LOW() \

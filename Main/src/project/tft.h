@@ -2,6 +2,7 @@
 #define TFT_H_
 
 #include "def.h"
+#include "FontAndColor.h"
 
 // ========================
 // TFT SPI
@@ -41,21 +42,12 @@
 #define RST_HIGH()   (TFT_RST_PORT |=  (1 << TFT_RST))
 
 
-// ========================
-// Colors RGB565
-// ========================
-
-#define RED     0xF800
-#define GREEN   0x07E0
-#define BLUE    0x001F
-#define WHITE   0xFFFF
-#define BLACK   0x0000
-#define YELLOW  0xFFE0
-
 
 extern volatile uint8_t motor_on;
 extern volatile uint8_t motor_level;
 extern volatile uint8_t rotation_on;
+
+
 
 void SPI_Write(uint8_t data);
 
@@ -70,6 +62,12 @@ void TFT_SetWindow(
     uint16_t x1,
     uint16_t y1
 );
+
+
+void DrawRect(uint16_t x0, uint16_t y0,uint16_t x1, uint16_t y1, uint16_t color);
+void DrawChar(uint16_t x, uint16_t y, char c, uint8_t scale, uint16_t fg, uint16_t bg);
+void DrawString(uint16_t center_x, uint16_t y, const char *str, uint8_t scale, uint16_t fg, uint16_t bg);
+
 
 void TFT_FillScreen(uint16_t color);
 void DrawUI(void);

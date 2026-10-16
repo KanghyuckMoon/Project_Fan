@@ -3,6 +3,9 @@
 
 #include "def.h"
 
+#define FAN_LOW     128
+#define FAN_MID     192
+#define FAN_HIGH    255
 
 void fanInit(void);
 

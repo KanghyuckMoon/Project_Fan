@@ -9,12 +9,8 @@ static uint32_t prevTick = 0;
 
 void ServoInit(void)
 {
-    DDRB = 0xFF;
     DDRB |= (1 << PB5);
 
-    // Fast PWM, Mode 14
-    // TOP = ICR1
-    // OC1A non-inverting
     TCCR1A = (1 << COM1A1) |
              (1 << WGM11);
 

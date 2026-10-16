@@ -5,56 +5,11 @@
 #include <stdint.h>
 
 
-
-#define SCREEN_WIDTH  240
-#define SCREEN_HEIGHT 320
-
 // 상태 변수
 volatile uint8_t motor_on = 0;
 volatile uint8_t motor_level = 1;
 volatile uint8_t rotation_on = 0;
 
-// 글꼴: A, E, F, L, N, O, R, T, U, V, 1, 2, 3, /, 공백
-static const uint8_t font[15][7] = {
-    {14,17,17,31,17,17,17}, // A
-    {31,16,16,30,16,16,31}, // E
-    {31,16,16,30,16,16,16}, // F
-    {16,16,16,16,16,16,31}, // L
-    {17,25,25,21,19,19,17}, // N
-    {14,17,17,17,17,17,14}, // O
-    {30,17,17,30,20,18,17}, // R
-    {31,4,4,4,4,4,4},       // T
-    {17,17,17,17,17,17,14}, // U
-    {17,17,17,17,17,10,4},  // V
-    {4,12,4,4,4,4,14},      // 1
-    {14,17,1,2,4,8,31},     // 2
-    {30,1,1,14,1,1,30},     // 3
-    {1,2,2,4,8,8,16},       // /
-    {0,0,0,0,0,0,0}         // 공백
-};
-
-static uint8_t FontIndex(char c)
-{
-    switch (c)
-    {
-        case 'A': return 0;
-        case 'E': return 1;
-        case 'F': return 2;
-        case 'L': return 3;
-        case 'N': return 4;
-        case 'O': return 5;
-        case 'R': return 6;
-        case 'T': return 7;
-        case 'U': return 8;
-        case 'V': return 9;
-        case '1': return 10;
-        case '2': return 11;
-        case '3': return 12;
-        case '/': return 13;
-        case ' ': return 14;
-        default:  return 14;
-    }
-}
 
 
 
@@ -98,9 +53,7 @@ void TFT_Init(void)
 {
     // PORTB
     // CS / MOSI / SCK 출력
-    TFT_DDR |= (1 << TFT_CS)
-            |  (1 << TFT_MOSI)
-            |  (1 << TFT_SCK);
+    TFT_DDR |= (1 << TFT_CS) |  (1 << TFT_MOSI) |  (1 << TFT_SCK);
 
     // PORTA
     // RESET / DC 출력
@@ -259,43 +212,43 @@ void DrawString(uint16_t center_x, uint16_t y,
 }
 
 // 버튼 하나 그리기
-void DrawButton(uint8_t zone, uint16_t color,
-                const char *label, uint16_t text_color)
-{
-    uint16_t x = (zone % 2) * 120;
-    uint16_t y = (zone / 2) * 160;
+// void DrawButton(uint8_t zone, uint16_t color,
+//                 const char *label, uint16_t text_color)
+// {
+//     uint16_t x = (zone % 2) * 120;
+//     uint16_t y = (zone / 2) * 160;
 
-    // 버튼 배경: 흰색
-    DrawRect(x, y, x + 120, y + 160, WHITE);
+//     // 버튼 배경: 흰색
+//     DrawRect(x, y, x + 120, y + 160, WHITE);
 
-    // 버튼 테두리: 검은색
-    DrawRect(x, y, x + 120, y + 2, BLACK);
-    DrawRect(x, y + 158, x + 120, y + 160, BLACK);
-    DrawRect(x, y, x + 2, y + 160, BLACK);
-    DrawRect(x + 118, y, x + 120, y + 160, BLACK);
+//     // 버튼 테두리: 검은색
+//     DrawRect(x, y, x + 120, y + 2, BLACK);
+//     DrawRect(x, y + 158, x + 120, y + 160, BLACK);
+//     DrawRect(x, y, x + 2, y + 160, BLACK);
+//     DrawRect(x + 118, y, x + 120, y + 160, BLACK);
 
-    // 버튼 글자: 검은색
-    DrawString(x + 60, y + 76, label, 2, BLACK, WHITE);
-}
+//     // 버튼 글자: 검은색
+//     DrawString(x + 60, y + 76, label, 2, BLACK, WHITE);
+// }
 
 
 // 현재 상태에 맞춰 버튼 4개 표시
 void DrawUI(void)
 {
-    DrawButton(0, motor_on ? GREEN : RED,
-               motor_on ? "ON" : "OFF", WHITE);
+    // DrawButton(0, motor_on ? GREEN : RED,
+    //            motor_on ? "ON" : "OFF", WHITE);
 
-    if (motor_level == 1)
-        DrawButton(1, BLUE, "LEVEL 1", WHITE);
-    else if (motor_level == 2)
-        DrawButton(1, BLUE, "LEVEL 2", WHITE);
-    else
-        DrawButton(1, BLUE, "LEVEL 3", WHITE);
+    // if (motor_level == 1)
+    //     DrawButton(1, BLUE, "LEVEL 1", WHITE);
+    // else if (motor_level == 2)
+    //     DrawButton(1, BLUE, "LEVEL 2", WHITE);
+    // else
+    //     DrawButton(1, BLUE, "LEVEL 3", WHITE);
 
-    DrawButton(2, rotation_on ? GREEN : RED,
-               rotation_on ? "ROT ON" : "ROT OFF", WHITE);
+    // DrawButton(2, rotation_on ? GREEN : RED,
+    //            rotation_on ? "ROT ON" : "ROT OFF", WHITE);
 
-    DrawButton(3, 0xFFE0, "AUTO", BLACK);
+    // DrawButton(3, 0xFFE0, "AUTO", BLACK);
 
     // 화면 중앙 구분선
     DrawRect(119, 0, 121, SCREEN_HEIGHT, WHITE);

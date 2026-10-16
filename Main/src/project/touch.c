@@ -10,6 +10,27 @@
 volatile uint16_t x, y;
 volatile uint8_t zone;
 
+
+static uint16_t MapValue(
+    uint16_t value,
+    uint16_t in_min,
+    uint16_t in_max,
+    uint16_t out_min,
+    uint16_t out_max
+)
+{
+    if (value < in_min)
+        value = in_min;
+
+    if (value > in_max)
+        value = in_max;
+
+    return (uint32_t)(value - in_min) *
+           (out_max - out_min) /
+           (in_max - in_min) +
+           out_min;
+}
+
 // ========================================
 // Touch Software SPI Write
 // ========================================
@@ -21,16 +42,16 @@ static void TOUCH_WriteByte(uint8_t data)
         // DIN
         if (data & 0x80)
         {
-            PORTA |= (1 << TOUCH_DIN);
+            TOUCH_PORT |= (1 << TOUCH_DIN);
         }
         else
         {
-            PORTA &= ~(1 << TOUCH_DIN);
+            TOUCH_PORT &= ~(1 << TOUCH_DIN);
         }
 
         // Clock
-        PORTA |= (1 << TOUCH_CLK);
-        PORTA &= ~(1 << TOUCH_CLK);
+        TOUCH_PORT |= (1 << TOUCH_CLK);
+        TOUCH_PORT &= ~(1 << TOUCH_CLK);
 
         data <<= 1;
     }
@@ -47,16 +68,16 @@ static uint8_t TOUCH_ReadByte(void)
 
     for (uint8_t i = 0; i < 8; i++)
     {
-        PORTA |= (1 << TOUCH_CLK);
+        TOUCH_PORT |= (1 << TOUCH_CLK);
 
         data <<= 1;
 
-        if (PINA & (1 << TOUCH_DO))
+        if (TOUCH_PIN & (1 << TOUCH_DO))
         {
             data |= 1;
         }
 
-        PORTA &= ~(1 << TOUCH_CLK);
+        TOUCH_PORT &= ~(1 << TOUCH_CLK);
     }
 
     return data;
@@ -106,28 +127,21 @@ static uint16_t TOUCH_ReadADC(uint8_t command)
 void TOUCH_Init(void)
 {
     // 출력
-    DDRA |= (1 << TOUCH_CS)
-          | (1 << TOUCH_CLK)
-          | (1 << TOUCH_DIN);
+    TOUCH_PORT_DDR |= (1 << TOUCH_CS) | (1 << TOUCH_CLK) | (1 << TOUCH_DIN);
 
 
     // 입력
-    DDRA &= ~(
-        (1 << TOUCH_DO)
-        |
-        (1 << TOUCH_IRQ)
-    );
-
+    TOUCH_PORT_DDR &= ~((1 << TOUCH_DO) | (1 << TOUCH_IRQ));
 
     // 기본 상태
     TOUCH_CS_HIGH();
 
-    PORTA &= ~(1 << TOUCH_CLK);
-    PORTA &= ~(1 << TOUCH_DIN);
+    TOUCH_PORT &= ~(1 << TOUCH_CLK);
+    TOUCH_PORT &= ~(1 << TOUCH_DIN);
 
 
     // IRQ Pull-up
-    PORTA |= (1 << TOUCH_IRQ);
+    TOUCH_PORT |= (1 << TOUCH_IRQ);
 }
 
 
@@ -138,7 +152,7 @@ void TOUCH_Init(void)
 uint8_t TOUCH_IsPressed(void)
 {
     // IRQ LOW = pressed
-    return !(PINA & (1 << TOUCH_IRQ));
+    return !(TOUCH_PIN & (1 << TOUCH_IRQ));
 }
 
 
@@ -166,33 +180,44 @@ uint16_t TOUCH_ReadY(void)
 // Read X/Y
 // ========================================
 
-uint8_t TOUCH_GetXY(
-    uint16_t *x,
-    uint16_t *y
-)
+uint8_t TOUCH_GetXY(uint16_t *x, uint16_t *y)
 {
-    DebugLog("Return 0\n");
-    if (!TOUCH_IsPressed())
-    {
-        return 0;
-    }
-    DebugLog("Return 1\n");
-
-
-    // 간단한 debounce
-    _delay_ms(10);
-
+    static uint8_t debounce_count = 0;
 
     if (!TOUCH_IsPressed())
     {
+        debounce_count = 0;
         return 0;
     }
-    DebugLog("Return 2\n");
 
+    if (debounce_count < 10)
+    {
+        debounce_count++;
+        return 0;
+    }
 
-    *x = TOUCH_ReadX();
-    *y = TOUCH_ReadY();
+    uint16_t rawX = TOUCH_ReadX();
+    uint16_t rawY = TOUCH_ReadY();
 
+    uint16_t mappedX = MapValue(
+        rawX,
+        TOUCH_X_MIN,
+        TOUCH_X_MAX,
+        0,
+        TFT_WIDTH - 1
+    );
+
+    uint16_t mappedY = MapValue(
+        rawY,
+        TOUCH_Y_MIN,
+        TOUCH_Y_MAX,
+        0,
+        TFT_HEIGHT - 1
+    );
+
+    // 터치 좌표계 -> TFT 좌표계 변환
+    *x = (TFT_WIDTH  - 1) - mappedX;
+    *y = (TFT_HEIGHT - 1) - mappedY;
 
     return 1;
 }
