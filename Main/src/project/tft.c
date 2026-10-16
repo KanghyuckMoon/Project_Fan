@@ -14,6 +14,30 @@ static uint16_t render_buffers[2][TFT_BUFFER_PIXELS];
 static uint16_t *render_target;
 static uint16_t render_x0, render_y0, render_x1, render_y1;
 
+bool TFT_RegionVisible(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
+{
+    if (x0 >= x1 || y0 >= y1) return false;
+    if (render_target != NULL)
+        return x0 < render_x1 && x1 > render_x0 && y0 < render_y1 && y1 > render_y0;
+    return x0 < SCREEN_WIDTH && y0 < SCREEN_HEIGHT;
+}
+
+static void PaintStripe(uint16_t *buffer, uint16_t x0, uint16_t y0,
+                        uint16_t width, uint16_t rows, uint16_t clear_color,
+                        TFT_Painter painter, void *context)
+{
+    render_target = buffer;
+    render_x0 = x0;
+    render_y0 = y0;
+    render_x1 = x0 + width;
+    render_y1 = y0 + rows;
+    uint16_t count = width * rows;
+    for (uint16_t i = 0; i < count; i++)
+        buffer[i] = clear_color;
+    painter(context);
+    render_target = NULL;
+}
+
 static void FlushBuffer(const uint16_t *pixels, uint16_t x0, uint16_t y0,
                         uint16_t width, uint16_t rows)
 {
@@ -57,21 +81,11 @@ void TFT_RenderRegion(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1,
         if (rows > stripe_rows)
             rows = stripe_rows;
 
-        render_target = render_buffers[back];
-        render_x0 = x0;
-        render_y0 = top;
-        render_x1 = x1;
-        render_y1 = top + rows;
-        uint16_t count = width * rows;
-        for (uint16_t i = 0; i < count; i++)
-            render_target[i] = clear_color;
-
         // 배경, 글자, 구분선을 합성하는 동안에는 TFT에 쓰지 않는다.
-        painter(context);
-        render_target = NULL;
+        PaintStripe(render_buffers[back], x0, top, width, rows, clear_color, painter, context);
 
         // 이전 front를 끝까지 보낸 뒤 역할을 바꾼다.
-        // 소프트웨어 SPI이므로 합성과 전송은 순차 실행된다.
+        // SPIF 완료를 기다리는 동기식 전송이다.
         if (pending_rows != 0)
             FlushBuffer(render_buffers[back ^ 1], x0, pending_y, width, pending_rows);
         pending_y = top;
@@ -83,22 +97,71 @@ void TFT_RenderRegion(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1,
     FlushBuffer(render_buffers[back ^ 1], x0, pending_y, width, pending_rows);
 }
 
+bool TFT_RenderChangedRegion(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1,
+                             uint16_t clear_color, TFT_Painter painter,
+                             void *before, void *after)
+{
+    if (render_target != NULL || painter == NULL || x0 >= SCREEN_WIDTH || y0 >= SCREEN_HEIGHT)
+        return false;
+    if (x1 > SCREEN_WIDTH) x1 = SCREEN_WIDTH;
+    if (y1 > SCREEN_HEIGHT) y1 = SCREEN_HEIGHT;
+    if (x0 >= x1 || y0 >= y1) return false;
+
+    bool transferred = false;
+    uint16_t width = x1 - x0;
+    uint16_t stripe_rows = TFT_BUFFER_PIXELS / width;
+    for (uint16_t top = y0; top < y1; )
+    {
+        uint16_t rows = y1 - top;
+        if (rows > stripe_rows) rows = stripe_rows;
+        PaintStripe(render_buffers[0], x0, top, width, rows, clear_color, painter, before);
+        PaintStripe(render_buffers[1], x0, top, width, rows, clear_color, painter, after);
+
+        // 모든 픽셀이 바뀐 띠는 한 윈도우로 전송한다.
+        uint16_t count = width * rows;
+        bool all_changed = true;
+        for (uint16_t i = 0; i < count; i++)
+            if (render_buffers[0][i] == render_buffers[1][i])
+            {
+                all_changed = false;
+                break;
+            }
+        if (all_changed)
+        {
+            FlushBuffer(render_buffers[1], x0, top, width, rows);
+            transferred = true;
+        }
+        else
+        {
+            for (uint16_t row = 0; row < rows; row++)
+            {
+                uint16_t offset = row * width;
+                uint16_t col = 0;
+                while (col < width)
+                {
+                    while (col < width && render_buffers[0][offset + col] == render_buffers[1][offset + col]) col++;
+                    uint16_t start = col;
+                    while (col < width && render_buffers[0][offset + col] != render_buffers[1][offset + col]) col++;
+                    if (col > start)
+                    {
+                        FlushBuffer(&render_buffers[1][offset + start], x0 + start, top + row, col - start, 1);
+                        transferred = true;
+                    }
+                }
+            }
+        }
+        top += rows;
+    }
+    return transferred;
+}
 
 
 void SPI_Write(uint8_t data)
 {
-    for (uint8_t i = 0; i < 8; i++)
-    {
-        if (data & 0x80)
-            TFT_PORT |= (1 << TFT_MOSI);
-        else
-            TFT_PORT &= ~(1 << TFT_MOSI);
-
-        TFT_PORT |= (1 << TFT_SCK);
-        TFT_PORT &= ~(1 << TFT_SCK);
-
-        data <<= 1;
-    }
+    SPDR = data;
+    while (!(SPSR & (1 << SPIF))) {}
+    // SPSR 다음에 SPDR을 읽어 완료 플래그를 지운다.
+    (void)SPDR;
 }
 
 void TFT_Command(uint8_t cmd)
@@ -125,7 +188,9 @@ void TFT_Init(void)
 {
     // PORTB
     // CS / MOSI / SCK 출력
-    TFT_DDR |= (1 << TFT_CS) |  (1 << TFT_MOSI) |  (1 << TFT_SCK);
+    // PB0(SS)를 출력으로 유지해야 CS가 LOW여도 Master 모드가 유지된다.
+    CS_HIGH();
+    TFT_DDR |= (1 << TFT_CS) | (1 << TFT_MOSI) | (1 << TFT_SCK);
 
     // PORTA
     // RESET / DC 출력
@@ -139,6 +204,10 @@ void TFT_Init(void)
     RST_HIGH();
 
     TFT_PORT &= ~(1 << TFT_SCK);
+
+    // MSB first, SPI Mode 0, Master. PB4/PB5 PWM 설정은 건드리지 않는다.
+    SPCR = (1 << SPE) | (1 << MSTR);
+    SPSR = TFT_SPI_DOUBLE_SPEED ? (1 << SPI2X) : 0;
 
 
     // ========================
@@ -345,6 +414,9 @@ void DrawString(uint16_t center_x, uint16_t y,
                 uint16_t fg, uint16_t bg)
 {
     if (str == NULL || *str == '\0' || scale == 0)
+        return;
+    uint32_t bottom = (uint32_t)y + 7U * scale;
+    if (!TFT_RegionVisible(0, y, SCREEN_WIDTH, bottom > SCREEN_HEIGHT ? SCREEN_HEIGHT : bottom))
         return;
 
     uint16_t len = 0;

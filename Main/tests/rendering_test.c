@@ -5,8 +5,10 @@
 #include <setjmp.h>
 
 uint8_t PORTA, PORTB, DDRA, DDRB;
+volatile uint8_t SPCR, SPSR, SPDR;
 static uint16_t screen[SCREEN_HEIGHT][SCREEN_WIDTH];
 static uint16_t expected[SCREEN_HEIGHT][SCREEN_WIDTH];
+static uint16_t before_screen[SCREEN_HEIGHT][SCREEN_WIDTH];
 static uint8_t writes[SCREEN_HEIGHT][SCREEN_WIDTH];
 static uint8_t command, args[4], arg_count, high, half;
 static uint16_t x0, y0, x1, y1, px, py;
@@ -58,6 +60,34 @@ static void Reset(void)
     pixels = bytes = windows = 0;
 }
 
+static void BeginDiff(void)
+{
+    memcpy(before_screen, screen, sizeof(screen));
+    memset(writes, 0, sizeof(writes));
+}
+
+static unsigned long AssertDiffOnly(void)
+{
+    unsigned long changed = 0;
+    for (unsigned y = 0; y < SCREEN_HEIGHT; y++)
+        for (unsigned x = 0; x < SCREEN_WIDTH; x++)
+        {
+            bool different = before_screen[y][x] != screen[y][x];
+            assert(writes[y][x] == (different ? 1 : 0));
+            changed += different;
+        }
+    return changed;
+}
+
+static void AssertCanvasMatches(Canvas *canvas)
+{
+    memcpy(expected, screen, sizeof(screen));
+    DrawUI();
+    for (unsigned i = 0; i < MAX_BUTTONS; i++)
+        if (canvas->buttonIntance[i] != NULL) DrawButton(canvas->buttonIntance[i]);
+    assert(memcmp(expected, screen, sizeof(screen)) == 0);
+}
+
 static Button *clicked;
 static void Click(void) { SetLabel(clicked, "OFF"); }
 
@@ -95,19 +125,46 @@ static void TestCanvas(void)
     assert(!DrawDirtyCanvas(&canvas));
     clicked = &buttons[0];
     assert(GUIMain(&canvas, 20, 20) == RESULT_CHANGE);
+    BeginDiff();
     unsigned long before_pixels = pixels;
     assert(DrawDirtyCanvas(&canvas));
-    assert(pixels - before_pixels == 19200);
+    unsigned long changed = AssertDiffOnly();
+    assert(changed > 0 && changed < 19200 && pixels - before_pixels == changed);
+    printf("label-only changed pixels: %lu (formerly 19200)\n", changed);
     assert(!buttons[1].dirty && !buttons[2].dirty && !buttons[3].dirty);
     SetLabel(&buttons[0], "ON");
+    BeginDiff();
     assert(DrawDirtyCanvas(&canvas));
+    AssertDiffOnly();
     assert(memcmp(expected, screen, sizeof(screen)) == 0); // Erase longer OFF label.
     SetButtonEnable(&buttons[0], false);
-    before = bytes;
-    assert(!DrawDirtyCanvas(&canvas) && bytes == before);
-    SetButtonEnable(&buttons[0], true);
+    BeginDiff();
     assert(DrawDirtyCanvas(&canvas));
-    puts("PASS: canvas pixels, single writes, dirty updates, shorter labels, enable");
+    AssertDiffOnly();
+    AssertCanvasMatches(&canvas);
+    SetButtonEnable(&buttons[0], true);
+    BeginDiff();
+    assert(DrawDirtyCanvas(&canvas));
+    AssertDiffOnly();
+    before = bytes;
+    InvalidateButton(&buttons[0]);
+    assert(!DrawDirtyCanvas(&canvas) && bytes == before);
+
+    char mutable_label[16] = "ON";
+    buttons[0].label = mutable_label;
+    assert(!DrawDirtyCanvas(&canvas)); // Same pixels despite a different pointer.
+    mutable_label[1] = 'F';
+    BeginDiff();
+    assert(DrawDirtyCanvas(&canvas)); // No setter or invalidation required.
+    AssertDiffOnly();
+    AssertCanvasMatches(&canvas);
+    buttons[0].bound.x = 8; // Restore the old position and respect overlapping cards.
+    buttons[1].accent = GUI_PURPLE;
+    BeginDiff();
+    assert(DrawDirtyCanvas(&canvas));
+    AssertDiffOnly();
+    AssertCanvasMatches(&canvas);
+    puts("PASS: exact pixel diffs, unchanged suppression, mutable text, hide/show, move/overlap");
 }
 
 static uint8_t scale;
@@ -152,10 +209,33 @@ static void TestRegion(uint16_t left, uint16_t top, uint16_t right, uint16_t bot
     assert(!half && (PORTB & (1 << TFT_CS)));
 }
 
+static void PaintSolid(void *context)
+{
+    painting = true;
+    DrawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, *(uint16_t *)context);
+    painting = false;
+}
+
+static void TestChangedRegion(void)
+{
+    uint16_t old_color = GREEN, new_color = RED;
+    Reset();
+    TFT_RenderRegion(7, 9, 120, 72, BLACK, PaintSolid, &old_color);
+    BeginDiff();
+    assert(TFT_RenderChangedRegion(7, 9, 120, 72, BLACK, PaintSolid, &old_color, &new_color));
+    assert(AssertDiffOnly() == 113UL * 63);
+    unsigned long before = bytes;
+    assert(!TFT_RenderChangedRegion(7, 9, 120, 72, BLACK, PaintSolid, &new_color, &new_color));
+    assert(!TFT_RenderChangedRegion(7, 9, 7, 72, BLACK, PaintSolid, &old_color, &new_color));
+    assert(bytes == before);
+    puts("PASS: full-stripe diff, final partial stripe, identical/invalid diff suppression");
+}
+
 // Run the real application initialization and touch loop with hardware stubs.
 volatile uint32_t tick;
 static jmp_buf application_done;
 static unsigned touch_step, power_calls, speed_calls, rotate_calls;
+static unsigned long application_changed;
 void uartInit(void) {}
 void fanInit(void) {}
 void ServoInit(void) {}
@@ -169,13 +249,23 @@ void ServoMain(void) {}
 uint8_t TOUCH_IsPressed(void) { return touch_step % 4 != 3; }
 uint8_t TOUCH_GetXY(uint16_t *x, uint16_t *y)
 {
-    *x = touch_step >= 4 && touch_step < 8 ? 150 : 30;
+    *x = (touch_step >= 4 && touch_step < 8) || touch_step >= 12 ? 150 : 30;
     *y = touch_step >= 8 ? 220 : 100;
     return TOUCH_IsPressed();
 }
 void TickMain(void)
 {
-    if (++touch_step == 12) longjmp(application_done, 1);
+    unsigned long changed = AssertDiffOnly();
+    if (touch_step % 4 == 0) assert(changed > 0);
+    else assert(changed == 0);
+    application_changed += changed;
+    if (++touch_step == 12) memcpy(expected, screen, sizeof(screen));
+    if (touch_step == 20)
+    {
+        assert(memcmp(expected, screen, sizeof(screen)) == 0); // Auto ON then OFF.
+        longjmp(application_done, 1);
+    }
+    BeginDiff();
 }
 
 static void ExportPreview(const char *name)
@@ -201,13 +291,21 @@ static void ExportPreview(const char *name)
 static void TestApplication(void)
 {
     Reset();
+    DDRB = 0xB0;
+    PORTB = 0xB0;
     assert(apInit() == 0);
+    assert(DDRB == 0xB7 && (PORTB & 0xB0) == 0xB0); // Preserve PWM pins.
+    assert(SPCR == ((1 << SPE) | (1 << MSTR)));
+    assert(SPSR == (TFT_SPI_DOUBLE_SPEED ? (1 << SPI2X) : 0));
     assert(pixels == 76800);
     ExportPreview("smart-fan-idle");
+    BeginDiff();
     if (setjmp(application_done) == 0) apMain();
     assert(power_calls == 1 && speed_calls == 1 && rotate_calls == 1);
     assert(motor_on == 1 && rotation_on == 1 && motor_level == 2);
-    assert(pixels == 76800 + 3 * 104 * 104);
+    assert(pixels == 76800 + application_changed);
+    assert(application_changed < 5 * 104 * 104);
+    printf("five application clicks: %lu changed pixels (formerly 54080)\n", application_changed);
     ExportPreview("smart-fan-active");
     puts("PASS: actual application layout, active states, speed level, one action per press");
 }
@@ -229,6 +327,7 @@ int main(void)
     TFT_RenderRegion(0, 0, 1, 1, BLACK, NULL, &scale);
     assert(bytes == before);
     puts("PASS: alternating stripes, clipping, scaling, final stripe, invalid regions");
+    TestChangedRegion();
     TestApplication();
     return 0;
 }

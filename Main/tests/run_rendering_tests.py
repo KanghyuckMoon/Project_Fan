@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Host regression tests: python3 tests/run_rendering_tests.py (requires gcc).
 
-Only the GPIO bit-banging implementation of SPI_Write is replaced. Production
+Only the hardware byte transport SPI_Write is replaced. Production
 rendering code is compiled against fake AVR registers and a TFT protocol decoder.
 """
 import os
@@ -25,8 +25,10 @@ def main():
         (work / "avr/io.h").write_text(
             "#include <stdint.h>\n"
             "extern uint8_t PORTA, PORTB, DDRA, DDRB;\n"
+            "extern volatile uint8_t SPCR, SPSR, SPDR;\n"
             "#define PB0 0\n#define PB1 1\n#define PB2 2\n"
             "#define PA0 0\n#define PA1 1\n"
+            "#define SPE 6\n#define MSTR 4\n#define SPIF 7\n#define SPI2X 0\n"
         )
         (work / "avr/interrupt.h").write_text("")
         (work / "avr/pgmspace.h").write_text(
@@ -37,6 +39,7 @@ def main():
         source = (ROOT / "src/project/tft.c").read_text()
         start = source.index("void SPI_Write(")
         end = source.index("void TFT_Command(", start)
+        (work / "spi.c").write_text('#include "tft.h"\n' + source[start:end])
         (work / "tft.c").write_text(source[:start] + source[end:])
         command = ["gcc", "-std=c11", "-g", "-Wall", "-Wextra",
                    "-Wno-unused-function", "-fsanitize=address,undefined",
@@ -57,6 +60,12 @@ def main():
             arguments.preview_dir.mkdir(parents=True, exist_ok=True)
             environment["RENDER_PREVIEW_DIR"] = str(arguments.preview_dir.resolve())
         subprocess.run([str(work / "rendering_test")], check=True, env=environment)
+        # Exercise the actual production SPDR/SPIF byte function separately.
+        spi_command = command[:command.index(str(work / "tft.c"))]
+        spi_command += [str(work / "spi.c"), str(ROOT / "tests/spi_test.c"),
+                        "-o", str(work / "spi_test")]
+        subprocess.run(spi_command, check=True)
+        subprocess.run([str(work / "spi_test")], check=True, env=environment)
 
 
 if __name__ == "__main__":

@@ -15,6 +15,11 @@
 #define TFT_SCK  PB1
 #define TFT_MOSI PB2
 
+// 16MHz CPU에서 기본 8MHz. 0으로 설정하면 4MHz로 동작한다.
+#ifndef TFT_SPI_DOUBLE_SPEED
+#define TFT_SPI_DOUBLE_SPEED 1
+#endif
+
 // ========================
 // TFT Control
 // ========================
@@ -74,6 +79,15 @@ typedef void (*TFT_Painter)(void *context);
 // 반환 시 모든 전송이 완료된다. CS/DC 직접 제어나 TFT_Data 사용은 금지한다.
 void TFT_RenderRegion(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1,
                       uint16_t clear_color, TFT_Painter painter, void *context);
+
+// 동일한 콜백으로 이전/새 상태를 각각 합성하고 달라진 픽셀 구간만 전송한다.
+// 버퍼 두 개를 비교에 사용한다. 실제 픽셀 전송이 있을 때만 true를 반환한다.
+bool TFT_RenderChangedRegion(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1,
+                             uint16_t clear_color, TFT_Painter painter,
+                             void *before, void *after);
+
+// 합성 중이면 현재 띠와 겹치는지 확인한다. 직접 그리기에서는 화면과 비교한다.
+bool TFT_RegionVisible(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
 
 
 void DrawRect(uint16_t x0, uint16_t y0,uint16_t x1, uint16_t y1, uint16_t color);

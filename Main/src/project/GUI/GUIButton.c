@@ -67,6 +67,7 @@ static const uint16_t icons[4][16] PROGMEM = {
 static void DrawIcon(uint16_t x, uint16_t y, ButtonIcon icon, uint16_t color)
 {
     if (icon < ICON_POWER || icon > ICON_AUTO) return;
+    if (!TFT_RegionVisible(x, y, x + 16, y + 16)) return;
     for (uint8_t row = 0; row < 16; row++)
     {
         uint16_t bits = pgm_read_word(&icons[icon - ICON_POWER][row]);
@@ -76,15 +77,48 @@ static void DrawIcon(uint16_t x, uint16_t y, ButtonIcon icon, uint16_t color)
     }
 }
 
-void DrawButton(Button* button)
+static void CopyText(char *destination, const char *source)
+{
+    if (source == NULL) return;
+    for (uint8_t i = 0; i < BUTTON_TEXT_CAPACITY - 1 && source[i] != '\0'; i++)
+        destination[i] = source[i];
+}
+
+void GetButtonAppearance(const Button *button, ButtonAppearance *appearance)
+{
+    // 패딩과 문자열의 남는 공간까지 초기화하여 memcmp 결과를 안정화한다.
+    memset(appearance, 0, sizeof(*appearance));
+    appearance->bound = button->bound;
+    appearance->color = button->color;
+    appearance->text_color = button->text_color;
+    appearance->accent = button->accent;
+    appearance->icon = button->icon;
+    appearance->active = button->active;
+    appearance->visible = button->enable;
+    appearance->level = button->level;
+    CopyText(appearance->label, button->label);
+    CopyText(appearance->title, button->title);
+    CopyText(appearance->hint, button->hint);
+}
+
+void DrawButton(Button *button)
 {
     if (button == NULL) return;
+    ButtonAppearance appearance;
+    GetButtonAppearance(button, &appearance);
+    DrawButtonAppearance(&appearance);
+}
+
+void DrawButtonAppearance(const ButtonAppearance *button)
+{
+    if (!button->visible) return;
     const Bound *bound = &button->bound;
     uint16_t x = bound->x, y = bound->y;
     uint16_t w = bound->width, h = bound->height;
     if (w == 0 || h == 0 || x >= SCREEN_WIDTH || y >= SCREEN_HEIGHT) return;
     uint16_t right = (uint32_t)x + w > SCREEN_WIDTH ? SCREEN_WIDTH : x + w;
     uint16_t bottom = (uint32_t)y + h > SCREEN_HEIGHT ? SCREEN_HEIGHT : y + h;
+    if (!TFT_RegionVisible(x, y, right, bottom)) return;
     w = right - x;
     h = bottom - y;
     uint16_t accent = button->accent ? button->accent : GUI_TEAL;
@@ -110,7 +144,7 @@ void DrawButton(Button* button)
              button->active ? accent : GUI_BORDER);
 
     DrawString(x + w / 2, y + 43, button->title, 1, GUI_MUTED, surface);
-    uint16_t length = button->label ? strlen(button->label) : 0;
+    uint16_t length = strlen(button->label);
     uint8_t scale = (uint32_t)length * 12 > w - 12U ? 1 : 2;
     DrawString(x + w / 2, y + 58, button->label, scale,
                button->active ? accent : button->text_color, surface);
