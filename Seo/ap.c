@@ -18,10 +18,23 @@ int uartPutchar(char c, FILE *stream)
 }
 
 ISR(USART0_RX_vect)
-{
-    static uint8_t rxHead = 0;
+{    
     uint8_t rxData = UDR0;
 
+    // 's'나 'x'가 들어오면 엔터 입력 없이 즉시 스트리밍 제어
+    if (rxData == 's' || rxData == 'S')
+    {
+        isStreaming = 1;
+        LCD_WriteStringXY(1, 0, "Stream: On     ");
+    }
+    else if (rxData == 'x' || rxData == 'X')
+    {
+        isStreaming = 0;
+        LCD_WriteStringXY(1, 0, "Stream: OFF    ");
+    }
+
+    // 기존 문자열 명령어('p', 'c' 등) 처리를 위한 로직 유지
+    static uint8_t rxHead = 0;
     if(rxData == '\n' || rxData == '\r')
     {
         rxBuff[rxHead] = '\0';

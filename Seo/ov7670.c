@@ -20,6 +20,10 @@
 #define CAM_DATA_PIN    PINC
 #define CAM_DATA_DDR    DDRC
 
+// ap.c에 선언된 수신 플래그와 버퍼 참조
+extern volatile uint8_t rxFlag;
+extern char rxBuff[100];
+extern volatile uint8_t isStreaming;
 
 // 레지스터 설정 구조체
 typedef struct {
@@ -289,8 +293,13 @@ void OV7670_Capture_Frame(void)
 void OV7670_Stream_Frame_UART(void)
 {
     // 1. VSYNC 대기 및 프레임 시작 동기화
-    while (!(CAM_CTRL_PIN & (1<<VSYNC_BIT)));
-    while (CAM_CTRL_PIN & (1<<VSYNC_BIT));
+    while (!(CAM_CTRL_PIN & (1<<VSYNC_BIT))){
+        // 대기 중에도 혹시 모를 중지 명령 확인 가능
+        if (rxFlag && strcmp(rxBuff, "x") == 0) { isStreaming = 0; return; }
+    }
+    while (CAM_CTRL_PIN & (1<<VSYNC_BIT)){
+        if (rxFlag && strcmp(rxBuff, "x") == 0) { isStreaming = 0; return; }
+    }
 
     // 2. PC 측에서 프레임의 시작을 알 수 있도록 고유한 헤더 전송
     uartTransmit(0xFF);
