@@ -151,6 +151,19 @@ ATmega128A의 SRAM은 4,096바이트입니다. 240 × 320 RGB565 화면 전체�
 
 **기준 버전의 TFT 통신은 소프트웨어 SPI이며, 합성과 전송은 순차 실행됩니다.** 부분 더블 버퍼링은 화면 전체의 원자적 교체나 화면 찢어짐 방지를 보장하지 않습니다. 실제 응답 시간과 프레임 속도는 하드웨어 측정이 필요합니다. 상세 설계는 [렌더링 문서](Main/docs/rendering.md)에 정리되어 있습니다.
 
+### 4. Fan·Servo의 FSM 기반 제어
+
+팬과 서보는 **FSM(Finite State Machine, 유한 상태 머신)** 방식으로 상태와 상태별 동작을 구분합니다. 터치 이벤트가 전원·풍속·회전 상태를 바꾸고, 각 제어 함수는 해당 상태에 맞는 PWM 출력을 처리합니다.
+
+| 대상 | 상태 표현 | 상태 전이와 동작 |
+| --- | --- | --- |
+| Fan | `isOn`으로 전원 상태, 풍속 값 `0/1/2`로 LOW/MID/HIGH 구분 | `fanToggle()`로 전원 전환, `SetSpeed()`로 풍속 선택. OFF에서는 선택값을 저장하고, ON에서는 단계별 PWM 비교값 적용 |
+| Servo | `Mode_None`, `Mode_Rotate`, `Mode_Tracking` | `SetNoneMode()`, `SetRotateMode()`, `SetTrackingMode()`로 상태 전이. `ServoMain()`의 `switch`에서 현재 상태에 따른 동작 수행 |
+
+Fan은 전원과 풍속 변수의 조합으로 상태를 표현하고, Servo는 명시적인 모드 값으로 상태를 표현합니다. Servo의 `Mode_None`은 위치 갱신 중지, `Mode_Rotate`는 왕복 이동을 수행하며, `Mode_Tracking`은 확장용 상태로 제어 동작이 아직 연결되어 있지 않습니다.
+
+상태·전이·출력 처리를 구분하여 버튼 이벤트부터 모터 동작까지의 흐름을 추적하고, 기능별 제어 로직을 검토하기 쉽게 구성했습니다. 관련 구현은 [fan.c](Main/src/project/fan.c), [servo.c](Main/src/project/servo.c), [servo.h](Main/src/project/servo.h)에서 확인할 수 있습니다.
+
 ## 하드웨어 핀맵
 
 | 장치 | ATmega128A 핀 | 신호 |

@@ -151,6 +151,19 @@ Fonts and icons are stored in flash using `PROGMEM`, and rendering buffers are s
 
 **The reference version uses software SPI for the TFT; composition and transmission run sequentially.** Partial double buffering does not guarantee atomic full-screen replacement or tear-free output. Actual response time and frame rate require hardware measurements. See the [rendering documentation](Main/docs/rendering.md) for details; that document is in Korean.
 
+### 4. FSM-Based Fan and Servo Control
+
+The fan and servo use a **Finite State Machine (FSM)** approach to distinguish control states and their behavior. Touch events change power, speed, or oscillation states, and the control functions handle the corresponding PWM output.
+
+| Device | State representation | Transitions and behavior |
+| --- | --- | --- |
+| Fan | `isOn` represents power; speed values `0/1/2` select LOW/MID/HIGH | `fanToggle()` changes power and `SetSpeed()` selects airflow. While OFF, the selected value is stored; while ON, the corresponding PWM comparison value is applied |
+| Servo | `Mode_None`, `Mode_Rotate`, `Mode_Tracking` | `SetNoneMode()`, `SetRotateMode()`, and `SetTrackingMode()` change the state. The `switch` in `ServoMain()` executes the behavior for the current mode |
+
+The fan represents its state through a combination of power and speed variables; the servo uses explicit mode values. `Mode_None` stops servo position updates, `Mode_Rotate` performs oscillation, and `Mode_Tracking` is an extension state whose control behavior is not yet connected.
+
+Separating states, transitions, and output handling makes the path from button events to motor behavior easier to trace and review. See [fan.c](Main/src/project/fan.c), [servo.c](Main/src/project/servo.c), and [servo.h](Main/src/project/servo.h).
+
 ## Hardware Pin Map
 
 | Device | ATmega128A pin | Signal |
